@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrate</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="nombre" name="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellidos</ion-label>
+      <ion-input type="text" [(ngModel)]="apellidos" name="apellidos"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Correo electrónico</ion-label>
+      <ion-input type="email" [(ngModel)]="correo" name="correo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha de Nacimiento</ion-label>
+      <ion-button (click)="openDatePicker()" fill="outline">Seleccionar Fecha</ion-button>
+      <span *ngIf="fechaNacimiento">{{ fechaNacimiento | date: 'dd/MM/yyyy' }}</span>
+    </ion-item>
+    <ion-button expand="full" (click)="register()">Registrarse</ion-button>
+  </form>
+</ion-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { TooltipPosition, MatTooltipModule } from '@angular/material/tooltip';
+import { ModalController } from '@ionic/angular'; // Importa ModalController
+import { RegisterModalComponent } from '../register-modal/register-modal.component'; // Ajusta la ruta si es necesario
 
 @Component({
   selector: 'app-login',
@@ -9,13 +9,15 @@ import { TooltipPosition, MatTooltipModule } from '@angular/material/tooltip';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
-}
 
-export class TooltipPositionExample {
-  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-  position = new FormControl(this.positionOptions[0]);
+  async openRegisterModal() {
+    const modal = await this.modalCtrl.create({
+      component: RegisterModalComponent,
+    });
+    return await modal.present();
+  }
 }

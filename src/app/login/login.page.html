@@ -5,9 +5,9 @@
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-list>
-      <ion-item class="custom-item">
-        <ion-select aria-label="Select Language" value="en" interface="popover" class="custom-select">
+    <ion-list id="custom-item">
+      <ion-item id="custom-item">
+        <ion-select slot="end" id="custom-item"aria-label="Select Language" value="en" interface="popover">
           <ion-select-option value="en">English</ion-select-option>
           <ion-select-option value="de">Deutsch</ion-select-option>
           <ion-select-option value="fr">Français</ion-select-option>
@@ -32,7 +32,10 @@
       <ion-button expand="block" shape="round">Iniciar Sesión</ion-button>
       <ion-button style="display: block; margin-left: auto; margin-right: auto;" color="secondary" expand="
       block" shape="round">Recuperar contraseña</ion-button>
-      <ion-button color="light" fill="clear" shape="round" expand="block">¿Primera vez? Registrate</ion-button>
+      <ion-button color="light" fill="clear" shape="round" expand="block" (click)="openRegisterModal()">¿Primera vez? Registrate</ion-button>
+
+      <ion-button id="soy-extranjero-button" color="light" fill="clear" shape="round" expand="block">Soy extranjero</ion-button>
+
 
     </form>
  

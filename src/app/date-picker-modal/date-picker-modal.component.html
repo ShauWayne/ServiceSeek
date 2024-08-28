@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Selecciona tu Fecha de Nacimiento</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Fecha de Nacimiento</ion-label>
+    <ion-datetime 
+      display-format="DD/MM/YYYY" 
+      [(ngModel)]="selectedDate" 
+      placeholder="Selecciona una fecha">
+    </ion-datetime>
+  </ion-item>
+  <ion-button expand="full" (click)="selectDate()">Seleccionar</ion-button>
+</ion-content>
