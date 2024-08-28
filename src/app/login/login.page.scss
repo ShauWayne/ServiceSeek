@@ -28,7 +28,7 @@ ion-content {
         }
     }
  
-    #form {
+    #form { /*Formulario inicio de sesion*/
 
         margin-top: -450px;
         padding-left: 30px;
@@ -42,17 +42,17 @@ ion-content {
 
         }*/
     
-    ion-card {
+    ion-card { /*Card que puede ser aplicado en cualquier parte de la APP*/
         background: #e7eff6;
         margin-top: -250px;
         padding-left: 30px;
         padding-right: 30px;
     }
 
-ion-button {
+/*ion-button {
      --background: var(--ion-color-primary);
         
-    }
+    }*/
     
 ion-button-reset {
     --background: var(--ion-color-danger);
@@ -64,13 +64,13 @@ ion-button-reset {
 
 app-input .input-container {
     background-color: white;
-    color: black;
+    color: rgb(99, 22, 22);
     border: 1px solid #ccc;
 }
 
 .custom-item {
     --background: transparent; /* Fondo transparente */
-    --border-color: #ccc; /* Color del borde */
+    --border-color: #4e1919; /* Color del borde */
     --border-radius: 8px; /* Bordes redondeados */
     --padding-start: 16px; /* Espaciado interno */
     --padding-end: 16px;

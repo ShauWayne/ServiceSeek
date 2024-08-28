@@ -8,17 +8,17 @@ ion-item {
 
 
 
-    ion-input{
+    ion-input{  /*Configuracion de las letras de los input de la APP*/
         font-size: 18px;
         --padding-top: 20px;
         --padding-bottom: 15px;
         --padding-start: 5px;
-        color: #ffffff;
+        color: #000000;
         --background-color: #ffffff;
 
     }
     a{
-        font-size: 17;
+        font-size: 17px;
         letter-spacing: 0.5px;
         text-decoration: none;
     }  
