@@ -27,9 +27,10 @@
     </div>
     
     <form id="form">
-      <app-input  placeholder="Email" ></app-input>
+      <app-input  placeholder="Email" id="email-imput"></app-input>
+      <span id="error-msg" style="color: red;"></span>
       <app-input type="password" placeholder="Password"></app-input>
-      <ion-button expand="block" shape="round">Iniciar Sesión</ion-button>
+      <ion-button expand="block" shape="round" (click)="irAHome()">Iniciar Sesión</ion-button>
       <ion-button style="display: block; margin-left: auto; margin-right: auto;" color="secondary" expand="
       block" shape="round">Recuperar contraseña</ion-button>
       <ion-button color="light" fill="clear" shape="round" expand="block" (click)="openRegisterModal()">¿Primera vez? Registrate</ion-button>
