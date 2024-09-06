@@ -25,3 +25,84 @@
 #container a {
   text-decoration: none;
 }
+ion-toolbar { /*Barra superior*/
+    --background: #f17961;
+}
+
+ion-content { /*Contenido central de la app*/
+    --background: #103754;
+    #header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-style: bold;
+
+        h1 {
+            font-weight: 700;
+            font-size: 30px;
+            color: #F17961;
+            margin-bottom: 15%;
+        }
+
+        img {
+            margin-top: -40px;
+            width: 300px;
+            height: 300px;
+            /*border-radius: 50%;
+            border: 5px solid #287078;*/
+        }
+    }
+ 
+    #form { /*Formulario inicio de sesion*/
+
+        margin-top: -450px;
+        padding-left: 30px;
+        padding-right: 30px;
+        
+
+    }   
+    
+    /*ion-button {
+        background: #ffffff;   
+
+        }*/
+    
+    ion-card { /*Card que puede ser aplicado en cualquier parte de la APP*/
+        background: #e7eff6;
+        margin-top: -250px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    
+  ion-button-reset { /*Boton para recuperar clave*/
+      --background: var(--ion-color-danger);
+      
+  }
+
+  .example-user-input {
+      margin-right: 8px;
+    }
+
+  #custom-item {
+      font-size: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+  ion-select {
+      background-color: #f17961;
+      color: rgb(255, 255, 255);
+    }
+    #soy-extranjero-button {  /*Boton de Soy extranjero*/
+      margin-top: -25px; 
+  }
+
+}
+
+
+.title-content {
+  display: flex;
+  align-items: center;
+}
