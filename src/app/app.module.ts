@@ -8,12 +8,14 @@ import { RegisterModalComponent } from './register-modal/register-modal.componen
 import { InputModule } from "./components/input/input.module"; // Ajusta la ruta si es necesario
 import { FormsModule } from '@angular/forms';
 import { DatePickerModalComponent } from './date-picker-modal/date-picker-modal.component'; 
+import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterModalComponent, // Declara el componente del modal
-    DatePickerModalComponent
+    DatePickerModalComponent,
+    RecuperarPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,7 @@ import { DatePickerModalComponent } from './date-picker-modal/date-picker-modal.
     AppRoutingModule,
     InputModule,
     FormsModule,
+    
     
 ],
   providers: [

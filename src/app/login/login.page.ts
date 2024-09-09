@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular'; // Importa ModalController
 import { Router } from '@angular/router';
 import { RegisterModalComponent } from '../register-modal/register-modal.component'; // Ajusta la ruta si es necesario
+import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,13 @@ export class LoginPage implements OnInit {
   async openRegisterModal() {
     const modal = await this.modalCtrl.create({
       component: RegisterModalComponent,
+    });
+    return await modal.present();
+  }
+
+  async openRecuperarPass() {
+    const modal = await this.modalCtrl.create({
+      component: RecuperarPasswordComponent,
     });
     return await modal.present();
   }
