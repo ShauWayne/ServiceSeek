@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { InputModule } from "./components/input/input.module"; // Ajusta la ruta si es necesario
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule
 import { DatePickerModalComponent } from './date-picker-modal/date-picker-modal.component'; 
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 
@@ -23,9 +23,8 @@ import { RecuperarPasswordComponent } from './recuperar-password/recuperar-passw
     AppRoutingModule,
     InputModule,
     FormsModule,
-    
-    
-],
+    ReactiveFormsModule, // Agrega ReactiveFormsModule aquí
+  ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
