@@ -26,11 +26,11 @@
       <img src="assets/icon/icono2.png" alt="logo" />
     </div>
     
-    <form id="form">
-      <app-input  placeholder="Email" id="email-imput"></app-input>
+    <form id="form" (ngSubmit)="onLogin()">
+      <app-input [(ngModel)]="username" placeholder="Email" id="email-imput"></app-input>
       <span id="error-msg" style="color: red;"></span>
-      <app-input type="password" placeholder="Password"></app-input>
-      <ion-button expand="block" shape="round" (click)="irAHome()">Iniciar Sesión</ion-button>
+      <app-input [(ngModel)]="password"  type="password" placeholder="Password"></app-input>
+      <ion-button expand="block" shape="round" type="submit">Iniciar Sesión</ion-button>
       <ion-button style="display: block; margin-left: auto; margin-right: auto;" color="secondary" expand="
       block" shape="round" (click)="openRecuperarPass()">Recuperar contraseña</ion-button>
       <ion-button color="light" fill="clear" shape="round" expand="block" (click)="openRegisterModal()">¿Primera vez? Registrate</ion-button>
