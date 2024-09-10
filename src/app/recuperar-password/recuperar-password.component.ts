@@ -28,4 +28,7 @@ export class RecuperarPasswordComponent {
     // Lógica para recuperar la contraseña
     this.dismiss();
   }
+  aceptar(){
+    window.location.reload();
+  }
 }

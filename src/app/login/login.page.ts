@@ -4,19 +4,26 @@ import { Router } from '@angular/router';
 import { RegisterModalComponent } from '../register-modal/register-modal.component'; // Ajusta la ruta si es necesario
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 import { AlertController, NavController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit{
+  formLogin: FormGroup;
 
-  username: string = ''; // Inicializar como cadena vacía
-  password: string = ''; // Inicializar como cadena vacía
-  errorMessage: string = ''; // Inicializar como cadena vacía
-
-  constructor(private modalCtrl: ModalController, private router:Router, private alertController: AlertController) { }
+  constructor(
+    private modalCtrl: ModalController,
+    private router:Router,
+    private alertController: AlertController,
+    private fbl: FormBuilder) {
+      this.formLogin = this.fbl.group({
+        username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
+        password:  ['', [Validators.required, Validators.pattern('^(?=.*\d{4})(?=.*[a-zA-Z0-9]{3})(?=.*[A-Z]).{7,}$')]]
+      })
+     }
 
 
   ngOnInit() {
@@ -36,42 +43,17 @@ export class LoginPage {
     return await modal.present();
   }
 
-  onLogin(){
-    this.errorMessage = '';
-
-    if (!this.isPasswordValid(this.password)) {
-      this.errorMessage = 'La contraseña debe tener al menos 4 números, 3 caracteres especiales, y 1 letra mayúscula.';
-      return;
+  async onLogin(){
+    if (this.formLogin.valid) {
+      // Aquí puedes manejar el registro, los datos son válidos
+      console.log('Formulario válido, guardando...', this.formLogin.value);
+      this.router.navigate(['/home']);
+    } else {
+      // Mostrar un mensaje de error si el formulario es inválido
+      console.log('Formulario no válido, revisa los campos.');
+      this.formLogin.markAllAsTouched();  // Para que todos los campos sean validados visualmente
     }
 
-    this.showSuccessAlert();
-    
-  }
-
-  isPasswordValid(password: string): boolean {
-    // Al menos 4 números
-    const hasNumber = (password.match(/[0-9]/g) || []).length >= 4;
-    // Al menos 1 letra mayúscula
-    const hasUpperCase = /[A-Z]/.test(password);
-    // Al menos 3 caracteres especiales
-    const hasCharacter = (password.match(/[!@#$%^&*(),.?":{}|<>_-]/g) || []).length >= 3;
-
-    return hasNumber && hasUpperCase && hasCharacter && password.length >= 8;
-  }
-
-  async showSuccessAlert() {
-    const alert = await this.alertController.create({
-      header: '¡Bienvenido a AhorraSmart!',
-      message: ' Toma las riendas de tus finanzas.',
-      buttons: [{
-        text: 'OK',
-        handler: () => {
-          this.router.navigate(['/home']);
-        }
-      }]
-    });
-
-    await alert.present();
   }
   
   
