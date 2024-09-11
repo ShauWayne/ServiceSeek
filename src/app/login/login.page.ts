@@ -23,7 +23,7 @@ export class LoginPage implements OnInit{
   ) {
     this.formLogin = this.fbl.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*\\d{4})(?=.*[a-zA-Z0-9]{3})(?=.*[A-Z]).{7,}$')]]
+      password: ['', [Validators.required, Validators.pattern('^(?=(?:[^\\d]*\\d){4})(?=(?:[^a-zA-Z]*[a-zA-Z]){3})(?=(?:[^A-Z]*[A-Z]){1})(?=(?:[^\\W]*[\\W]){3})[\\dA-Za-z\\W]*$')]]
     });
   }
 
@@ -51,6 +51,7 @@ export class LoginPage implements OnInit{
       console.log('Formulario no válido, revisa los campos.');
       this.formLogin.markAllAsTouched();
     }
+    
   }
 
   // Función para abrir el modal de redes sociales
