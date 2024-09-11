@@ -46,17 +46,17 @@
        <ng-template>
        <ion-header>
         <ion-toolbar>
-         <ion-title>Iniciar Sesión</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="closeModal()">Cerrar</ion-button>
           </ion-buttons>
+         <ion-title>Iniciar Sesión</ion-title>
+         
         </ion-toolbar>
       </ion-header>
     <ion-content>
         <div id="modal-content">
-          <h2>Elige una opción para continuar</h2>
-          <ion-button expand="block" color="primary" (click)="googleLogin()">Iniciar con Google</ion-button>
-          <ion-button expand="block" color="secondary" (click)="facebookLogin()">Iniciar con Facebook</ion-button>
+          <ion-button expand="block" color="light" (click)="googleLogin()">Iniciar con Google</ion-button>
+          <ion-button expand="block" color="light" (click)="facebookLogin()">Iniciar con Facebook</ion-button>
         </div>
     </ion-content>
       </ng-template>

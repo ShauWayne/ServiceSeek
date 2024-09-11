@@ -30,7 +30,7 @@ ion-toolbar { /*Barra superior*/
 }
 
 ion-content { /*Contenido central de la app*/
-    --background: #103754;
+  --background: url('/assets/icon/mapa_fondo.png') no-repeat center center / cover;
     #header {
         display: flex;
         flex-direction: column;
@@ -100,7 +100,6 @@ ion-content { /*Contenido central de la app*/
   }
 
 }
-
 
 .title-content {
   display: flex;

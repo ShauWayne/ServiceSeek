@@ -68,3 +68,10 @@ ion-button-reset { /* Botón para recuperar clave */
 #soy-extranjero-button {  /* Botón de Soy extranjero */
     margin-top: -25px; 
 }
+
+#modal-content {
+    background-color: black; /* Fondo negro */
+    color: white;            /* Texto blanco */
+    padding: 20px;           /* Espacio interno opcional */
+    border-radius: 8px;      /* Bordes redondeados opcionales */
+}
