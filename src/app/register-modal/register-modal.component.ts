@@ -20,7 +20,7 @@ export class RegisterModalComponent implements OnInit {
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       fechaNacimiento: ['', Validators.required],
-      correo: ['', [Validators.required, Validators.email]]
+      correo: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]]
     });
   }
   ngOnInit(): void {

@@ -1,75 +1,70 @@
-ion-toolbar { /*Barra superior*/
+ion-toolbar { /* Barra superior */
     --background: #f17961;
 }
 
-ion-content { /*Contenido central de la app*/
+ion-content { /* Contenido central de la app */
     --background: #103754;
-    #header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100vh;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-style: bold;
+}
 
-        h1 {
-            font-weight: 700;
-            font-size: 30px;
-            color: #F17961;
-            margin-bottom: 15%;
-        }
+/* Estilos para el header */
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: bold;
+}
 
-        img {
-            margin-top: -40px;
-            width: 300px;
-            height: 300px;
-            /*border-radius: 50%;
-            border: 5px solid #287078;*/
-        }
-    }
- 
-    #form { /*Formulario inicio de sesion*/
+#header h1 {
+    font-weight: 700;
+    font-size: 30px;
+    color: #F17961;
+    margin-bottom: 15%;
+}
 
-        margin-top: -450px;
-        padding-left: 30px;
-        padding-right: 30px;
-        
+#header img {
+    margin-top: -40px;
+    width: 300px;
+    height: 300px;
+}
 
-    }   
-    
-    /*ion-button {
-        background: #ffffff;   
+/* Estilos para el formulario de inicio de sesión */
+#form {
+    margin-top: -450px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
 
-        }*/
-    
-    ion-card { /*Card que puede ser aplicado en cualquier parte de la APP*/
-        background: #e7eff6;
-        margin-top: -250px;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
+ion-input {
+    --background: #ffffff;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --border-radius: 10px;
+    --color: #000000;
+    margin-bottom: 20px;
+}
 
-    
-ion-button-reset { /*Boton para recuperar clave*/
+ion-select {
+    --background: #ffffff;
+    --color: #ffffff;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+ion-button-reset { /* Botón para recuperar clave */
     --background: var(--ion-color-danger);
-    
 }
 
 .example-user-input {
     margin-right: 8px;
-  }
-
-#custom-item {
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-ion-select {
-    background-color: #f17961;
-    color: rgb(255, 255, 255);
-  }
-  #soy-extranjero-button {  /*Boton de Soy extranjero*/
-    margin-top: -25px; 
 }
 
+#custom-item {
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#soy-extranjero-button {  /* Botón de Soy extranjero */
+    margin-top: -25px; 
 }
