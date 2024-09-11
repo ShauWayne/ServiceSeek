@@ -13,6 +13,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginPage implements OnInit{
   formLogin: FormGroup;
+username: any;
+password: any;
 
   constructor(
     private modalCtrl: ModalController,
