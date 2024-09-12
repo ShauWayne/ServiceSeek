@@ -36,18 +36,42 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 /*@import "@ionic/angular/css/palettes/dark.system.css";*/
 
+/* Estilos generales para los modales */
 ion-modal {
-    --height: 70%;
-    --border-radius: 16px;
-    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  }
+  --height: 70%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Estilos específicos para el modal de bienvenida (con el id #bienvenido) */
+#bienvenido {
+  --height: 34%; /* Ajusta la altura del modal de bienvenida */
+  --border-radius: 20px; /* Personaliza los bordes redondeados */
+  --box-shadow: 0 15px 20px -3px rgb(0 0 0 / 0.2), 0 5px 8px -4px rgb(0 0 0 / 0.15); /* Cambia la sombra */
+}
+#formRecuperar {
+  --height: 34%; /* Ajusta la altura del modal de bienvenida */
+  --border-radius: 20px; /* Personaliza los bordes redondeados */
+  --box-shadow: 0 15px 20px -3px rgb(0 0 0 / 0.2), 0 5px 8px -4px rgb(0 0 0 / 0.15); /* Cambia la sombra */
+}
+
+#bienvenido::part(backdrop) {
+  background: rgba(0, 0, 0, 0.5); /* Cambia el color del fondo cuando el modal está abierto */
+  opacity: 100;
+}
+
+#bienvenido ion-toolbar {
+  --background: rgb(34 193 195); /* Cambia el color del toolbar del modal de bienvenida */
+  --color: white;
+}
+
   
-  ion-modal::part(backdrop) {
-    background: rgba(209, 213, 219);
-    opacity: 1;
-  }
-  
-  ion-modal ion-toolbar {
-    --background: rgb(14 116 144);
-    --color: white;
-  }
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(14 116 144);
+  --color: white;
+}

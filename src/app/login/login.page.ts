@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegisterModalComponent } from '../register-modal/register-modal.component';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController} from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
