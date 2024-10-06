@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular'
 import { RegisterModalComponent } from '../register-modal/register-modal.component';
 import { AnimationController } from '@ionic/angular';
 import type { IonModal } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomePage implements OnInit {
   isModalOpen = false;
   @ViewChild('modal', { static: true }) modal!: IonModal;
 
-  constructor(private modalCtrl: ModalController, private animationCtrl: AnimationController) {}
+  constructor(private modalCtrl: ModalController, private animationCtrl: AnimationController, private router: Router) {}
 
   openModal() {
     this.isModalOpen = true;
@@ -21,6 +22,12 @@ export class HomePage implements OnInit {
 
   closeModal() {
     this.isModalOpen = false;
+  }
+
+  logout(){
+    console.log('Cerrando sesión... ');
+      this.router.navigate(['/login']);
+
   }
 
   ngOnInit() {
@@ -60,5 +67,7 @@ export class HomePage implements OnInit {
     this.modal.enterAnimation = enterAnimation;
     this.modal.leaveAnimation = leaveAnimation;
   }
+
+
 
 }

@@ -45,7 +45,7 @@
         <ion-icon aria-hidden="true" slot="start" name="information-circle" size="medium"></ion-icon>
         <ion-label>Términos y condiciones</ion-label>
       </ion-item>
-        <ion-button color="danger" slot="end" style="margin-top: auto;" [routerLink]="['/login']">
+        <ion-button color="danger" slot="end" style="margin-top: auto;" (click)="logout()">
           <ion-icon aria-hidden="true" size="large" slot="start" name="log-out-outline" size="medium"></ion-icon>Cerrar sesión
         </ion-button>
     </ion-list>

@@ -3,8 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RegisterModalComponent } from '../register-modal/register-modal.component';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
-import { AlertController} from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from '../auth/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +18,8 @@ export class LoginPage implements OnInit{
   constructor(
     private modalCtrl: ModalController,
     private router:Router,
-    private alertController: AlertController,
-    private fbl: FormBuilder
+    private fbl: FormBuilder,
+    private authService: AuthenticationService
   ) {
     this.formLogin = this.fbl.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
@@ -27,7 +27,8 @@ export class LoginPage implements OnInit{
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   async openRegisterModal() {
     const modal = await this.modalCtrl.create({
@@ -46,6 +47,8 @@ export class LoginPage implements OnInit{
   async onLogin(){
     if (this.formLogin.valid) {
       console.log('Formulario válido, guardando...', this.formLogin.value);
+      this.authService.login();
+      console.log('Usuario Autenticado: ',this.authService.isLoggedIn());
       this.router.navigate(['/home']);
     } else {
       console.log('Formulario no válido, revisa los campos.');
