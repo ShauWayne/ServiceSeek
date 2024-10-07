@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importa Re
 import { DatePickerModalComponent } from './date-picker-modal/date-picker-modal.component'; 
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 import { provideHttpClient } from '@angular/common/http'; // Importa esto
+import { SQLite } from '@ionic-native/sqlite/ngx';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { provideHttpClient } from '@angular/common/http'; // Importa esto
   ],
   providers: [
     provideHttpClient(),
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    SQLite,
   ],
   bootstrap: [AppComponent]
   // No es necesario entryComponents en Angular 9+
