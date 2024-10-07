@@ -28,9 +28,11 @@ export class BuscarServiciosPage implements OnInit {
   cargarServicios(){
     this.apiRestService.getServicios().subscribe((data) => {
         this.servicios = data;
+        console.log(this.servicios);
       },
       (error) => {
         console.error('Error al obtener los servicios:', error);
+        
       }
     );
   }

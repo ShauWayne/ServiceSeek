@@ -35,4 +35,28 @@ export class ApiRestService {
   deleteServicio(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/servicios/${id}`);
   }
+
+  getResenas(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/resenas`);
+  }
+
+  // Obtener un resena por ID
+  getResena(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/resenas/${id}`);
+  }
+
+  // Crear un nuevo resena
+  createResena(resena: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/resenas`, resena);
+  }
+
+  // Actualizar un Resena
+  updateResena(resena: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/resenas/${resena.id}`, resena);
+  }
+
+  // Borrar un resena
+  deleteResena(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/resenas/${id}`);
+  }
 }

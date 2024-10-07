@@ -42,7 +42,23 @@ const routes: Routes = [
     path: 'terminos-y-condiciones',
     loadChildren: () => import('./menu/terminos-y-condiciones/terminos-y-condiciones.module').then( m => m.TerminosYCondicionesPageModule)
   },
-  { path: '**', redirectTo: '404' }
+  { path: '**', redirectTo: '404' },  {
+    path: 'add-resena',
+    loadChildren: () => import('./menu/crud/resena/add-resena/add-resena.module').then( m => m.AddResenaPageModule)
+  },
+  {
+    path: 'del-resena',
+    loadChildren: () => import('./menu/crud/resena/del-resena/del-resena.module').then( m => m.DelResenaPageModule)
+  },
+  {
+    path: 'upd-resena',
+    loadChildren: () => import('./menu/crud/resena/upd-resena/upd-resena.module').then( m => m.UpdResenaPageModule)
+  },
+  {
+    path: 'servicio-resenas',
+    loadChildren: () => import('./menu/crud/servicios/servicio-resenas/servicio-resenas.module').then( m => m.ServicioResenasPageModule)
+  }
+
   
 
 ];
