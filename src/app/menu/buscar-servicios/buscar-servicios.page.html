@@ -25,8 +25,7 @@
       </ion-item>
     </ion-list><br>
     <ion-list lines="none" style="display: flex; flex-direction: column; height: 85%">
-      <ion-item style="font-size: large; margin-bottom: 5px;"  routerLink="/buscar-servicio">
-
+      <ion-item style="font-size: large; margin-bottom: 5px; background-color: black; border-radius: 15px;">
         <ion-icon aria-hidden="true" slot="start" name="locate-outline" size="medium"></ion-icon>
         <ion-label>Buscar Servicios</ion-label>
       </ion-item>
@@ -68,38 +67,37 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class="ion-padding"></ion-content>
-
-</div>
-
-<ion-modal [isOpen]="isModalOpen" id="bienvenido">
-  <ng-template>
-    <ion-content>
-      <ion-toolbar>
-        <ion-title style="font-size: xx-large;">ServiceSeek</ion-title>
-        <ion-buttons slot="end">
-          <ion-button color="light" (click)="closeModal()"><ion-icon name="close" color="dark"></ion-icon></ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-      <div class="ion-padding" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <ion-icon name="checkmark-circle" style="font-size: 100px; color: green;"></ion-icon>
-        <h1>¡Bienvenido Usuario!</h1>
-        <ion-button expand="block" color="primary" (click)="closeModal()">Aceptar</ion-button>
-      </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
-
-<ion-modal trigger="modal-trigger" #modal>
-  <ng-template>
+  <ion-content>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Modal</ion-title>
-        <ion-buttons slot="end">
-          <ion-button (click)="closeModal()">Close</ion-button>
-        </ion-buttons>
+        <ion-title>Búsqueda de servicios</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding"> Modal Content </ion-content>
-  </ng-template>
-</ion-modal>
+
+
+    <ion-content color="light">
+      <ion-list [inset]="true">
+        <ion-item [button]="true">
+          <ion-icon color="danger" slot="start" name="list-circle" size="large"></ion-icon>
+          <ion-label>General</ion-label>
+          <ion-note slot="end">6</ion-note>
+        </ion-item>
+      </ion-list>
+    
+      <ion-list [inset]="true" *ngFor="let servicio of servicios">
+        <ion-item [button]="true" detail="false">
+          <ion-label>
+            <strong>{{ servicio.nombre }}</strong>
+            <ion-text>{{ servicio.direccion }}</ion-text><br />
+            <ion-note color="medium" class="ion-text-wrap">{{ servicio.descripcion }}</ion-note>
+          </ion-label>
+          <div class="metadata-end-wrapper" slot="end">
+            <ion-note color="medium">{{ servicio.num_resenas }} reseñas</ion-note>
+            <ion-icon color="medium" name="chevron-forward"></ion-icon>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-content>
+
+</div>

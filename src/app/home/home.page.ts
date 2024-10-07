@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ModalController } from '@ionic/angular'
-import { RegisterModalComponent } from '../register-modal/register-modal.component';
 import { AnimationController } from '@ionic/angular';
 import type { IonModal } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   isModalOpen = false;
   @ViewChild('modal', { static: true }) modal!: IonModal;
 
-  constructor(private modalCtrl: ModalController, private animationCtrl: AnimationController, private router: Router) {}
+  constructor(private modalCtrl: ModalController, private animationCtrl: AnimationController, private router: Router, private auth: AuthenticationService) {}
 
   openModal() {
     this.isModalOpen = true;
@@ -26,7 +26,8 @@ export class HomePage implements OnInit {
 
   logout(){
     console.log('Cerrando sesión... ');
-      this.router.navigate(['/login']);
+    this.auth.logout();
+    this.router.navigate(['/login']);
 
   }
 

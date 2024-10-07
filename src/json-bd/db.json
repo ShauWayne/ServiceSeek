@@ -1,69 +1,637 @@
 {
-    "servicios": [
-      {
-        "id": 1,
-        "nombre": "Baño Público",
-        "tipo": "Higiene",
-        "ubicación": { "lat": -33.4489, "lng": -70.6693 },
-        "dirección": "Avenida Libertador Bernardo O'Higgins 1234",
-        "descripción": "Baño público accesible y limpio.",
-        "teléfono": "123456789",
-        "horario": "24 horas",
-        "calificación": 4.5,
-        "num_reseñas": 10
-      },
-      {
-        "id": 2,
-        "nombre": "Mudador",
-        "tipo": "Transporte",
-        "ubicación": { "lat": -33.4691, "lng": -70.6420 },
-        "dirección": "Calle Falsa 456",
-        "descripción": "Servicio de mudanzas confiable.",
-        "teléfono": "987654321",
-        "horario": "8:00 a 20:00",
-        "calificación": 4.8,
-        "num_reseñas": 15
-      }
-    ],
-    "reseñas": [
-      {
-        "id": 1,
-        "id_servicio": 1,
-        "usuario": "Juan Pérez",
-        "calificación": 5,
-        "comentario": "Muy limpio y accesible.",
-        "fecha": "2024-10-06"
-      },
-      {
-        "id": 2,
-        "id_servicio": 2,
-        "usuario": "María López",
-        "calificación": 4,
-        "comentario": "El servicio fue puntual.",
-        "fecha": "2024-10-05"
-      }
-    ],
-    "usuarios": [
-      {
-        "id": 1,
-        "nombre": "Juan Pérez",
-        "correo": "juan@example.com",
-        "contraseña": "hashed_password",
-        "foto_perfil": "url_to_profile_photo",
-        "fecha_registro": "2024-10-01"
-      }
-    ],
-    "categorías": [
-      {
-        "id": 1,
-        "nombre": "Higiene",
-        "descripción": "Servicios relacionados con higiene personal."
-      },
-      {
-        "id": 2,
-        "nombre": "Transporte",
-        "descripción": "Servicios de transporte y mudanzas."
-      }
-    ]
-  }
-  
+  "servicios": [
+    {
+      "id": 1,
+      "nombre": "Baño Publico",
+      "tipo": "Higiene",
+      "ubicacion": { "lat": -33.4489, "lng": -70.6693 },
+      "direccion": "Avenida Libertador Bernardo O'Higgins 1234",
+      "descripcion": "Baño público accesible y limpio.",
+      "telefono": "123456789",
+      "horario": "24 horas",
+      "calificacion": 4.5,
+      "num_resenas": 10
+    },
+    {
+      "id": 2,
+      "nombre": "Mudador",
+      "tipo": "Higiene",
+      "ubicacion": { "lat": -33.4691, "lng": -70.6420 },
+      "direccion": "Calle Falsa 456",
+      "descripcion": "Local para mudar bebes, limpio y seguro.",
+      "telefono": "987654321",
+      "horario": "8:00 a 20:00",
+      "calificacion": 4.8,
+      "num_resenas": 15
+    },
+    {
+      "id": 3,
+      "nombre": "Cajero Automatico",
+      "tipo": "Finanzas",
+      "ubicacion": { "lat": -33.4653, "lng": -70.6352 },
+      "direccion": "Avenida Providencia 3456",
+      "descripcion": "Cajero automático disponible 24/7.",
+      "telefono": "N/A",
+      "horario": "24 horas",
+      "calificacion": 4.0,
+      "num_resenas": 8
+    },
+    {
+      "id": 4,
+      "nombre": "Servicio de Taxi",
+      "tipo": "Transporte",
+      "ubicacion": { "lat": -33.4488, "lng": -70.6694 },
+      "direccion": "Plaza de Armas",
+      "descripcion": "Servicio de taxi confiable y rápido.",
+      "telefono": "555123456",
+      "horario": "24 horas",
+      "calificacion": 4.6,
+      "num_resenas": 12
+    },
+    {
+      "id": 5,
+      "nombre": "Comida Rapida",
+      "tipo": "Alimentacion",
+      "ubicacion": { "lat": -33.4487, "lng": -70.6691 },
+      "direccion": "Calle del Fast Food 789",
+      "descripcion": "Deliciosa comida rápida disponible.",
+      "telefono": "987654321",
+      "horario": "10:00 a 22:00",
+      "calificacion": 4.2,
+      "num_resenas": 20
+    },
+    {
+      "id": 6,
+      "nombre": "Estacionamiento",
+      "tipo": "Transporte",
+      "ubicacion": { "lat": -33.4569, "lng": -70.6485 },
+      "direccion": "Calle del Parking 123",
+      "descripcion": "Estacionamiento seguro y accesible.",
+      "telefono": "666789123",
+      "horario": "24 horas",
+      "calificacion": 4.3,
+      "num_resenas": 5
+    },
+    {
+      "id": 7,
+      "nombre": "Centro de Salud",
+      "tipo": "Salud",
+      "ubicacion": { "lat": -33.4500, "lng": -70.6700 },
+      "direccion": "Avenida de la Salud 456",
+      "descripcion": "Centro de salud disponible 24/7.",
+      "telefono": "111222333",
+      "horario": "24 horas",
+      "calificacion": 4.7,
+      "num_resenas": 15
+    },
+    {
+      "id": 8,
+      "nombre": "Biblioteca Publica",
+      "tipo": "Educacion",
+      "ubicacion": { "lat": -33.4555, "lng": -70.6284 },
+      "direccion": "Calle del Conocimiento 789",
+      "descripcion": "Biblioteca pública con acceso a internet.",
+      "telefono": "444555666",
+      "horario": "9:00 a 20:00",
+      "calificacion": 4.9,
+      "num_resenas": 7
+    },
+    {
+      "id": 9,
+      "nombre": "Gimnasio",
+      "tipo": "Deporte",
+      "ubicacion": { "lat": -33.4501, "lng": -70.6501 },
+      "direccion": "Calle del Ejercicio 123",
+      "descripcion": "Gimnasio equipado con máquinas modernas.",
+      "telefono": "777888999",
+      "horario": "6:00 a 22:00",
+      "calificacion": 4.5,
+      "num_resenas": 10
+    },
+    {
+      "id": 10,
+      "nombre": "Parque Publico",
+      "tipo": "Recreacion",
+      "ubicacion": { "lat": -33.4400, "lng": -70.6705 },
+      "direccion": "Avenida de los Parques 456",
+      "descripcion": "Parque público con áreas verdes y juegos.",
+      "telefono": "N/A",
+      "horario": "8:00 a 20:00",
+      "calificacion": 4.6,
+      "num_resenas": 18
+    },
+    {
+      "id": 11,
+      "nombre": "Ferreteria",
+      "tipo": "Hogar",
+      "ubicacion": { "lat": -33.4420, "lng": -70.6500 },
+      "direccion": "Calle de las Herramientas 789",
+      "descripcion": "Ferretería con herramientas y materiales de construcción.",
+      "telefono": "555666777",
+      "horario": "9:00 a 19:00",
+      "calificacion": 4.3,
+      "num_resenas": 9
+    },
+    {
+      "id": 12,
+      "nombre": "Lavanderia",
+      "tipo": "Hogar",
+      "ubicacion": { "lat": -33.4499, "lng": -70.6490 },
+      "direccion": "Calle del Lavado 456",
+      "descripcion": "Lavandería autoservicio con equipos modernos.",
+      "telefono": "666777888",
+      "horario": "7:00 a 22:00",
+      "calificacion": 4.5,
+      "num_resenas": 13
+    },
+    {
+      "id": 13,
+      "nombre": "Centro Comercial",
+      "tipo": "Compras",
+      "ubicacion": { "lat": -33.4550, "lng": -70.6610 },
+      "direccion": "Calle del Shopping 321",
+      "descripcion": "Centro comercial con diversas tiendas.",
+      "telefono": "333444555",
+      "horario": "10:00 a 22:00",
+      "calificacion": 4.1,
+      "num_resenas": 22
+    },
+    {
+      "id": 14,
+      "nombre": "Veterinaria",
+      "tipo": "Salud",
+      "ubicacion": { "lat": -33.4600, "lng": -70.6800 },
+      "direccion": "Avenida de los Animales 654",
+      "descripcion": "Veterinaria con atención a mascotas.",
+      "telefono": "444333222",
+      "horario": "9:00 a 18:00",
+      "calificacion": 4.8,
+      "num_resenas": 15
+    },
+    {
+      "id": 15,
+      "nombre": "Clinica Dental",
+      "tipo": "Salud",
+      "ubicacion": { "lat": -33.4520, "lng": -70.6770 },
+      "direccion": "Calle de la Sonrisa 432",
+      "descripcion": "Clínica dental con atención personalizada.",
+      "telefono": "111999888",
+      "horario": "9:00 a 19:00",
+      "calificacion": 4.4,
+      "num_resenas": 17
+    },
+    {
+      "id": 16,
+      "nombre": "Spa",
+      "tipo": "Bienestar",
+      "ubicacion": { "lat": -33.4530, "lng": -70.6780 },
+      "direccion": "Avenida del Relax 321",
+      "descripcion": "Spa con masajes y tratamientos de belleza.",
+      "telefono": "222111000",
+      "horario": "10:00 a 20:00",
+      "calificacion": 4.7,
+      "num_resenas": 14
+    },
+    {
+      "id": 17,
+      "nombre": "Estudio Fotográfico",
+      "tipo": "Arte",
+      "ubicacion": { "lat": -33.4610, "lng": -70.6805 },
+      "direccion": "Calle de las Fotos 543",
+      "descripcion": "Estudio fotográfico para sesiones y eventos.",
+      "telefono": "555777888",
+      "horario": "10:00 a 19:00",
+      "calificacion": 4.6,
+      "num_resenas": 8
+    },
+    {
+      "id": 18,
+      "nombre": "Centro de Yoga",
+      "tipo": "Bienestar",
+      "ubicacion": { "lat": -33.4555, "lng": -70.6300 },
+      "direccion": "Calle del Yoga 213",
+      "descripcion": "Clases de yoga para todas las edades.",
+      "telefono": "666888999",
+      "horario": "8:00 a 20:00",
+      "calificacion": 4.9,
+      "num_resenas": 11
+    },
+    {
+      "id": 19,
+      "nombre": "Escuela de Música",
+      "tipo": "Educacion",
+      "ubicacion": { "lat": -33.4450, "lng": -70.6900 },
+      "direccion": "Calle de la Musica 321",
+      "descripcion": "Clases de música para todos los niveles.",
+      "telefono": "777999000",
+      "horario": "9:00 a 18:00",
+      "calificacion": 4.8,
+      "num_resenas": 13
+    },
+    {
+      "id": 20,
+      "nombre": "Tienda de Ropa",
+      "tipo": "Compras",
+      "ubicacion": { "lat": -33.4481, "lng": -70.6701 },
+      "direccion": "Calle de la Moda 987",
+      "descripcion": "Tienda de ropa con las últimas tendencias.",
+      "telefono": "888000111",
+      "horario": "10:00 a 21:00",
+      "calificacion": 4.2,
+      "num_resenas": 9
+    }
+  ],
+  "resenas": [
+    {
+      "id": 1,
+      "id_servicio": 1,
+      "usuario": "Juan Perez",
+      "calificacion": 5,
+      "comentario": "Muy limpio y accesible.",
+      "fecha": "2024-10-06"
+    },
+    {
+      "id": 2,
+      "id_servicio": 2,
+      "usuario": "Maria Lopez",
+      "calificacion": 4,
+      "comentario": "El servicio fue puntual.",
+      "fecha": "2024-10-05"
+    },
+    {
+      "id": 3,
+      "id_servicio": 3,
+      "usuario": "Luis Gonzalez",
+      "calificacion": 4,
+      "comentario": "Cajero rápido y fácil de usar.",
+      "fecha": "2024-10-04"
+    },
+    {
+      "id": 4,
+      "id_servicio": 4,
+      "usuario": "Ana Rodriguez",
+      "calificacion": 5,
+      "comentario": "Taxi muy cómodo y servicio excelente.",
+      "fecha": "2024-10-03"
+    },
+    {
+      "id": 5,
+      "id_servicio": 5,
+      "usuario": "Carlos Martinez",
+      "calificacion": 3,
+      "comentario": "Comida rápida, pero un poco cara.",
+      "fecha": "2024-10-02"
+    },
+    {
+      "id": 6,
+      "id_servicio": 6,
+      "usuario": "Sofia Torres",
+      "calificacion": 4,
+      "comentario": "El estacionamiento es seguro y conveniente.",
+      "fecha": "2024-10-01"
+    },
+    {
+      "id": 7,
+      "id_servicio": 7,
+      "usuario": "Fernando Jimenez",
+      "calificacion": 5,
+      "comentario": "Atención médica excelente.",
+      "fecha": "2024-09-30"
+    },
+    {
+      "id": 8,
+      "id_servicio": 8,
+      "usuario": "Elena Gutierrez",
+      "calificacion": 4,
+      "comentario": "Biblioteca con buen ambiente.",
+      "fecha": "2024-09-29"
+    },
+    {
+      "id": 9,
+      "id_servicio": 9,
+      "usuario": "Andres Ramirez",
+      "calificacion": 5,
+      "comentario": "Gimnasio muy completo.",
+      "fecha": "2024-09-28"
+    },
+    {
+      "id": 10,
+      "id_servicio": 10,
+      "usuario": "Laura Vázquez",
+      "calificacion": 4,
+      "comentario": "Un parque muy agradable para pasear.",
+      "fecha": "2024-09-27"
+    },
+    {
+      "id": 11,
+      "id_servicio": 11,
+      "usuario": "Ricardo Silva",
+      "calificacion": 5,
+      "comentario": "Gran variedad de herramientas.",
+      "fecha": "2024-09-26"
+    },
+    {
+      "id": 12,
+      "id_servicio": 12,
+      "usuario": "Patricia Castro",
+      "calificacion": 4,
+      "comentario": "Lavandería limpia y eficiente.",
+      "fecha": "2024-09-25"
+    },
+    {
+      "id": 13,
+      "id_servicio": 13,
+      "usuario": "Daniela Morales",
+      "calificacion": 3,
+      "comentario": "El centro comercial está un poco desordenado.",
+      "fecha": "2024-09-24"
+    },
+    {
+      "id": 14,
+      "id_servicio": 14,
+      "usuario": "Gabriel Mendez",
+      "calificacion": 4,
+      "comentario": "Buena atención en la veterinaria.",
+      "fecha": "2024-09-23"
+    },
+    {
+      "id": 15,
+      "id_servicio": 15,
+      "usuario": "Claudia Rojas",
+      "calificacion": 5,
+      "comentario": "Clínica dental muy profesional.",
+      "fecha": "2024-09-22"
+    },
+    {
+      "id": 16,
+      "id_servicio": 16,
+      "usuario": "Miguel Ortega",
+      "calificacion": 4,
+      "comentario": "Spa muy relajante.",
+      "fecha": "2024-09-21"
+    },
+    {
+      "id": 17,
+      "id_servicio": 17,
+      "usuario": "Veronica Salinas",
+      "calificacion": 5,
+      "comentario": "Fotografías hermosas y profesionales.",
+      "fecha": "2024-09-20"
+    },
+    {
+      "id": 18,
+      "id_servicio": 18,
+      "usuario": "Arturo Vargas",
+      "calificacion": 4,
+      "comentario": "Clases de yoga muy relajantes.",
+      "fecha": "2024-09-19"
+    },
+    {
+      "id": 19,
+      "id_servicio": 19,
+      "usuario": "Jessica Pizarro",
+      "calificacion": 5,
+      "comentario": "Excelente escuela de música.",
+      "fecha": "2024-09-18"
+    },
+    {
+      "id": 20,
+      "id_servicio": 20,
+      "usuario": "Mario Herrera",
+      "calificacion": 4,
+      "comentario": "Buena ropa y precios accesibles.",
+      "fecha": "2024-09-17"
+    },
+    {
+      "id": 21,
+      "id_servicio": 3,
+      "usuario": "Roberto Soto",
+      "calificacion": 5,
+      "comentario": "Cajero siempre disponible.",
+      "fecha": "2024-10-06"
+    },
+    {
+      "id": 22,
+      "id_servicio": 4,
+      "usuario": "Santiago Ruiz",
+      "calificacion": 4,
+      "comentario": "Taxi muy amable y profesional.",
+      "fecha": "2024-10-05"
+    },
+    {
+      "id": 23,
+      "id_servicio": 5,
+      "usuario": "Natalia Lima",
+      "calificacion": 4,
+      "comentario": "Rápido pero un poco caro.",
+      "fecha": "2024-10-04"
+    },
+    {
+      "id": 24,
+      "id_servicio": 6,
+      "usuario": "Fernando Castro",
+      "calificacion": 5,
+      "comentario": "Estacionamiento muy conveniente.",
+      "fecha": "2024-10-03"
+    },
+    {
+      "id": 25,
+      "id_servicio": 7,
+      "usuario": "Carmen Jimenez",
+      "calificacion": 5,
+      "comentario": "Muy buen centro de salud.",
+      "fecha": "2024-10-02"
+    },
+    {
+      "id": 26,
+      "id_servicio": 8,
+      "usuario": "Esteban Mora",
+      "calificacion": 5,
+      "comentario": "Ambiente perfecto para estudiar.",
+      "fecha": "2024-10-01"
+    },
+    {
+      "id": 27,
+      "id_servicio": 9,
+      "usuario": "Pablo Ruiz",
+      "calificacion": 4,
+      "comentario": "Buen gimnasio, pero le falta equipamiento.",
+      "fecha": "2024-09-30"
+    },
+    {
+      "id": 28,
+      "id_servicio": 10,
+      "usuario": "Gabriela Sanchez",
+      "calificacion": 5,
+      "comentario": "Parque ideal para pasear en familia.",
+      "fecha": "2024-09-29"
+    },
+    {
+      "id": 29,
+      "id_servicio": 11,
+      "usuario": "Ricardo Silva",
+      "calificacion": 5,
+      "comentario": "Excelente calidad en herramientas.",
+      "fecha": "2024-09-28"
+    },
+    {
+      "id": 30,
+      "id_servicio": 12,
+      "usuario": "Patricia Castro",
+      "calificacion": 4,
+      "comentario": "Buena atención en la lavandería.",
+      "fecha": "2024-09-27"
+    },
+    {
+      "id": 31,
+      "id_servicio": 13,
+      "usuario": "Daniela Morales",
+      "calificacion": 3,
+      "comentario": "Un poco desordenado el centro comercial.",
+      "fecha": "2024-09-26"
+    },
+    {
+      "id": 32,
+      "id_servicio": 14,
+      "usuario": "Gabriel Mendez",
+      "calificacion": 4,
+      "comentario": "Veterinaria muy atenta.",
+      "fecha": "2024-09-25"
+    },
+    {
+      "id": 33,
+      "id_servicio": 15,
+      "usuario": "Claudia Rojas",
+      "calificacion": 5,
+      "comentario": "Atención de calidad en la clínica dental.",
+      "fecha": "2024-09-24"
+    },
+    {
+      "id": 34,
+      "id_servicio": 16,
+      "usuario": "Miguel Ortega",
+      "calificacion": 4,
+      "comentario": "Spa relajante y profesional.",
+      "fecha": "2024-09-23"
+    },
+    {
+      "id": 35,
+      "id_servicio": 17,
+      "usuario": "Veronica Salinas",
+      "calificacion": 5,
+      "comentario": "Fotografía profesional excelente.",
+      "fecha": "2024-09-22"
+    },
+    {
+      "id": 36,
+      "id_servicio": 18,
+      "usuario": "Arturo Vargas",
+      "calificacion": 4,
+      "comentario": "Clases de yoga muy beneficiosas.",
+      "fecha": "2024-09-21"
+    },
+    {
+      "id": 37,
+      "id_servicio": 19,
+      "usuario": "Jessica Pizarro",
+      "calificacion": 5,
+      "comentario": "Escuela de música recomendada.",
+      "fecha": "2024-09-20"
+    },
+    {
+      "id": 38,
+      "id_servicio": 20,
+      "usuario": "Mario Herrera",
+      "calificacion": 4,
+      "comentario": "Variedad de ropa a buen precio.",
+      "fecha": "2024-09-19"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Juan Perez",
+      "correo": "juan@example.com",
+      "contrasena": "hashed_password",
+      "foto_perfil": "url_to_profile_photo",
+      "fecha_registro": "2024-10-01"
+    },
+    {
+      "id": 2,
+      "nombre": "Isabel Martinez",
+      "correo": "isabel@example.com",
+      "contrasena": "hashed_password",
+      "foto_perfil": "url_to_profile_photo_2",
+      "fecha_registro": "2024-10-02"
+    },
+    {
+      "id": 3,
+      "nombre": "Carlos Mendez",
+      "correo": "carlos@example.com",
+      "contrasena": "hashed_password",
+      "foto_perfil": "url_to_profile_photo_3",
+      "fecha_registro": "2024-10-03"
+    },
+    {
+      "id": 4,
+      "nombre": "Lucia Torres",
+      "correo": "lucia@example.com",
+      "contrasena": "hashed_password",
+      "foto_perfil": "url_to_profile_photo_4",
+      "fecha_registro": "2024-10-04"
+    },
+    {
+      "id": 5,
+      "nombre": "Sebastian Gonzalez",
+      "correo": "sebastian@example.com",
+      "contrasena": "hashed_password",
+      "foto_perfil": "url_to_profile_photo_5",
+      "fecha_registro": "2024-10-05"
+    },
+    {
+      "id": 6,
+      "nombre": "Mariana Salas",
+      "correo": "mariana@example.com",
+      "contrasena": "hashed_password",
+      "foto_perfil": "url_to_profile_photo_6",
+      "fecha_registro": "2024-10-06"
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "nombre": "Higiene",
+      "descripcion": "Servicios relacionados con higiene personal."
+    },
+    {
+      "id": 2,
+      "nombre": "Transporte",
+      "descripcion": "Servicios de transporte y mudanzas."
+    },
+    {
+      "id": 3,
+      "nombre": "Bienestar",
+      "descripcion": "Servicios para el bienestar físico y mental."
+    },
+    {
+      "id": 4,
+      "nombre": "Educacion",
+      "descripcion": "Servicios educativos y de formación."
+    },
+    {
+      "id": 5,
+      "nombre": "Compras",
+      "descripcion": "Servicios y productos relacionados con compras."
+    },
+    {
+      "id": 6,
+      "nombre": "Salud",
+      "descripcion": "Servicios de salud y bienestar."
+    },
+    {
+      "id": 7,
+      "nombre": "Entretenimiento",
+      "descripcion": "Servicios de entretenimiento y ocio."
+    }
+  ]
+}

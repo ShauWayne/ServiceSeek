@@ -22,7 +22,29 @@ const routes: Routes = [
     path: '404', 
     loadChildren: () =>import ('./not-found/not-found.module').then( m => m.NotFoundPageModule)  },
 
-  { path: '**', redirectTo: '' }
+  {
+    path: 'buscar-servicio',
+    loadChildren: () => import('./menu/buscar-servicios/buscar-servicios.module').then( m => m.BuscarServiciosPageModule)
+  },
+  {
+    path: 'mapa',
+    loadChildren: () => import('./menu/mapa/mapa.module').then( m => m.MapaPageModule)
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./menu/ubicaciones-guardadas/ubicaciones-guardadas.module').then( m => m.UbicacionesGuardadasPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./menu/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'terminos-y-condiciones',
+    loadChildren: () => import('./menu/terminos-y-condiciones/terminos-y-condiciones.module').then( m => m.TerminosYCondicionesPageModule)
+  },
+  { path: '**', redirectTo: '404' }
+  
+
 ];
 
 @NgModule({

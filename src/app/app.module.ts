@@ -9,6 +9,7 @@ import { InputModule } from "./components/input/input.module"; // Ajusta la ruta
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule
 import { DatePickerModalComponent } from './date-picker-modal/date-picker-modal.component'; 
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
+import { provideHttpClient } from '@angular/common/http'; // Importa esto
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RecuperarPasswordComponent } from './recuperar-password/recuperar-passw
     ReactiveFormsModule, // Agrega ReactiveFormsModule aquí
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    provideHttpClient(),
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]
   // No es necesario entryComponents en Angular 9+
