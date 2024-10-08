@@ -1,6 +1,7 @@
 // src/app/services/database.service.ts
 
 import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
 import { Platform } from '@ionic/angular';
 import { ApiRestService } from './api-rest.service'; // Importar ApiRestService
 import { firstValueFrom } from 'rxjs'; // Para manejar Observables como Promesas

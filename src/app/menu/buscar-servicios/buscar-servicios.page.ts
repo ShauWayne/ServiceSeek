@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClServicio } from '../crud/servicios/model/ClServicio';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
-import { Router } from '@angular/router';
 import { ApiRestService } from '../../services/api-rest.service';
-import { DatabaseService } from '../../services/database.service';
+//import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-buscar-servicios',
@@ -11,40 +13,42 @@ import { DatabaseService } from '../../services/database.service';
 })
 export class BuscarServiciosPage implements OnInit {
 
-  servicios: any[] = [];
-  serviciosDB: any[] = []; // Variable para almacenar los servicios cargados desde SQLite
+  servicios: ClServicio[] = [];
 
   constructor(
-    private router: Router,
-    private auth: AuthenticationService, 
-    private apiRestService: ApiRestService,
-    private dbService: DatabaseService) {}
+    //public SqlLiteService: DatabaseService,
+    public apiRestService: ApiRestService,
+    public loadingController: LoadingController,
+    public router: Router,
+    public auth: AuthenticationService) {}
 
   ngOnInit() {
-    this.cargarServicios();  
-    this.cargarServiciosDesdeDB();
+    this.cargarServicios();  //Ejecuta función al iniciar
   }
 
-  cargarServicios(){
-    this.apiRestService.getServicios().subscribe((data) => {
+  async cargarServicios(){
+    console.log('Iniciando carga de Servicios...');
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+    });
+    await loading.present();
+    console.log('Ingresando a ApiRest');
+    await this.apiRestService.getServicios()
+    .subscribe({
+      next: (data) => {
+        console.log('Data: ',data);
         this.servicios = data;
-        console.log(this.servicios);
+        console.log('Servicios: ',this.servicios);
+        loading.dismiss();
       },
-      (error) => {
+      complete: () => {},
+      error: (error) => {
         console.error('Error al obtener los servicios:', error);
-        
-      }
-    );
+        loading.dismiss();
+      },
+    })
   }
 
-  async cargarServiciosDesdeDB() {
-    try {
-      this.serviciosDB = await this.dbService.getServicios(); // Llamamos al método `getServicios` desde DatabaseService
-      console.log('Servicios cargados desde SQLite:', this.serviciosDB); // Mostramos en consola los servicios obtenidos
-    } catch (error) {
-      console.error('Error al cargar los servicios desde SQLite:', error);
-    }
-  }
 
   logout(){
     console.log('Cerrando sesión... ');
