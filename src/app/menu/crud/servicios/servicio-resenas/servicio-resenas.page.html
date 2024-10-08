@@ -7,7 +7,7 @@
             <span style="font-size: 17px;">Menu</span>
           </div>  
         </ion-title>
-          <img src="../../assets/icon/icono2.png" style="width: 50px;">
+          <img src="../../../../../assets/icon/icono2.png" style="width: 50px;">
       </ion-title>
       <ion-buttons slot="end">
         <ion-menu-button>
@@ -76,36 +76,56 @@
 
 
     <ion-content color="light">
+      <ion-card>
+        <img alt="Imagen de servicio" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+        <ion-card-header>
+          <ion-card-subtitle>
+            <ion-icon name="pin" color="danger"></ion-icon>
+            {{ servicio.direccion }}
+          </ion-card-subtitle>
+          <ion-card-title>{{ servicio.nombre }}</ion-card-title>
+          <ion-card-subtitle>
+            <ion-icon name="star" color="warning"></ion-icon>
+             {{ servicio.calificacion }} / 5
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list lines="full">
+            <ion-item>
+              <ion-icon name="apps" slot="start"></ion-icon>
+              <ion-label><strong>Categoría:</strong></ion-label>
+              {{ servicio.tipo }}
+            </ion-item>
+            <ion-item>
+              <ion-icon name="call" slot="start"></ion-icon>
+              <ion-label><strong>Teléfono:</strong></ion-label>
+              <ion-note>{{ servicio.telefono }}</ion-note>
+            </ion-item>
+            <ion-item>
+              <ion-icon name="time" slot="start"></ion-icon>
+              <ion-label><strong>Horario:</strong></ion-label>
+              <ion-note>{{ servicio.horario }}</ion-note>
+            </ion-item>
+          </ion-list><br>
+          {{ servicio.descripcion }}
+        </ion-card-content>
+      </ion-card>
 
-      <ion-list [inset]="true">
-        <ion-item [button]="true" detail="false">
+      
+      <ion-list [inset]="true" *ngFor="let resena of resenas">
+        <ion-item [button]="false" detail="false">
           <ion-label>
-            <strong>Nombre Servicio</strong>
-            <ion-text>Dirección</ion-text><br />
-            <ion-note color="medium" class="ion-text-wrap">Descripción</ion-note>
+            <strong style="margin-right: 5px;">{{ resena.usuario }}</strong>
+            <ion-text><h1>{{ resena.comentario }}</h1></ion-text>
+            <ion-note color="medium">{{ resena.fecha }}</ion-note>
           </ion-label>
+          <ion-note color="medium" class="ion-text-wrap"></ion-note>
           <div class="metadata-end-wrapper" slot="end">
-            <ion-note color="medium">Cantidad de reseñas</ion-note>
-            <ion-icon color="medium" name="chevron-forward"></ion-icon>
+            <ion-icon name="star" color="warning"></ion-icon>
+            <span style="margin-left: 5px;">{{ resena.calificacion }}</span>            
           </div>
         </ion-item>
       </ion-list>
-
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Card Title</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Here's a small text description for the card content. Nothing more, nothing less.
-        </ion-card-content>
-      
-        <ion-button fill="clear">Action 1</ion-button>
-        <ion-button fill="clear">Action 2</ion-button>
-      </ion-card>
-
     </ion-content>
   </ion-content>
-
 </div>

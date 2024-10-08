@@ -9,8 +9,8 @@
       "descripcion": "Baño público accesible y limpio.",
       "telefono": "123456789",
       "horario": "24 horas",
-      "calificacion": 4.5,
-      "num_resenas": 10
+      "calificacion": 5,
+      "num_resenas": 1
     },
     {
       "id": 2,
@@ -21,8 +21,8 @@
       "descripcion": "Local para mudar bebes, limpio y seguro.",
       "telefono": "987654321",
       "horario": "8:00 a 20:00",
-      "calificacion": 4.8,
-      "num_resenas": 15
+      "calificacion": 4.0,
+      "num_resenas": 1
     },
     {
       "id": 3,
@@ -33,8 +33,8 @@
       "descripcion": "Cajero automático disponible 24/7.",
       "telefono": "N/A",
       "horario": "24 horas",
-      "calificacion": 4.0,
-      "num_resenas": 8
+      "calificacion": 4.5,
+      "num_resenas": 2
     },
     {
       "id": 4,
@@ -45,8 +45,8 @@
       "descripcion": "Servicio de taxi confiable y rápido.",
       "telefono": "555123456",
       "horario": "24 horas",
-      "calificacion": 4.6,
-      "num_resenas": 12
+      "calificacion": 4.5,
+      "num_resenas": 2
     },
     {
       "id": 5,
@@ -57,8 +57,8 @@
       "descripcion": "Deliciosa comida rápida disponible.",
       "telefono": "987654321",
       "horario": "10:00 a 22:00",
-      "calificacion": 4.2,
-      "num_resenas": 20
+      "calificacion": 3.5,
+      "num_resenas": 2
     },
     {
       "id": 6,
@@ -69,8 +69,8 @@
       "descripcion": "Estacionamiento seguro y accesible.",
       "telefono": "666789123",
       "horario": "24 horas",
-      "calificacion": 4.3,
-      "num_resenas": 5
+      "calificacion": 4.5,
+      "num_resenas": 2
     },
     {
       "id": 7,
@@ -81,8 +81,8 @@
       "descripcion": "Centro de salud disponible 24/7.",
       "telefono": "111222333",
       "horario": "24 horas",
-      "calificacion": 4.7,
-      "num_resenas": 15
+      "calificacion": 5,
+      "num_resenas": 2
     },
     {
       "id": 8,
@@ -93,8 +93,8 @@
       "descripcion": "Biblioteca pública con acceso a internet.",
       "telefono": "444555666",
       "horario": "9:00 a 20:00",
-      "calificacion": 4.9,
-      "num_resenas": 7
+      "calificacion": 4.5,
+      "num_resenas": 2
     },
     {
       "id": 9,
@@ -106,7 +106,7 @@
       "telefono": "777888999",
       "horario": "6:00 a 22:00",
       "calificacion": 4.5,
-      "num_resenas": 10
+      "num_resenas": 2
     },
     {
       "id": 10,
@@ -117,8 +117,8 @@
       "descripcion": "Parque público con áreas verdes y juegos.",
       "telefono": "N/A",
       "horario": "8:00 a 20:00",
-      "calificacion": 4.6,
-      "num_resenas": 18
+      "calificacion": 4.5,
+      "num_resenas": 2
     },
     {
       "id": 11,
@@ -129,8 +129,8 @@
       "descripcion": "Ferretería con herramientas y materiales de construcción.",
       "telefono": "555666777",
       "horario": "9:00 a 19:00",
-      "calificacion": 4.3,
-      "num_resenas": 9
+      "calificacion": 5,
+      "num_resenas": 2
     },
     {
       "id": 12,
@@ -141,8 +141,8 @@
       "descripcion": "Lavandería autoservicio con equipos modernos.",
       "telefono": "666777888",
       "horario": "7:00 a 22:00",
-      "calificacion": 4.5,
-      "num_resenas": 13
+      "calificacion": 4,
+      "num_resenas": 2
     },
     {
       "id": 13,
@@ -153,8 +153,8 @@
       "descripcion": "Centro comercial con diversas tiendas.",
       "telefono": "333444555",
       "horario": "10:00 a 22:00",
-      "calificacion": 4.1,
-      "num_resenas": 22
+      "calificacion": 3.0,
+      "num_resenas": 2
     },
     {
       "id": 14,
@@ -165,8 +165,8 @@
       "descripcion": "Veterinaria con atención a mascotas.",
       "telefono": "444333222",
       "horario": "9:00 a 18:00",
-      "calificacion": 4.8,
-      "num_resenas": 15
+      "calificacion": 4.0,
+      "num_resenas": 2
     },
     {
       "id": 15,

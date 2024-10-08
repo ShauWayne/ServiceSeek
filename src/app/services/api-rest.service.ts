@@ -89,6 +89,16 @@ export class ApiRestService {
         catchError(this.handleError('getResenas', []))
       );
   }
+  // Obtener todas las reseñas de un servicio
+  getResenasServicio(idServicio: number): Observable<ClResena[]> {
+    console.log("Obteniendo reseñas para el servicio ID:", idServicio);
+    return this.http.get<ClResena[]>(`${apiUrl}/resenas?id_servicio=${idServicio}`)
+    .pipe(
+        tap(resenas => console.log('Reseñas obtenidas:', resenas)),
+        catchError(this.handleError('getResenasServicio', []))
+    );
+}
+
 
   // Obtener una reseña por ID
   getResena(id: number): Observable<ClResena> {

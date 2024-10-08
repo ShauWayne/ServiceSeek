@@ -85,7 +85,7 @@
       </ion-list>
     
       <ion-list [inset]="true" *ngFor="let servicio of servicios">
-        <ion-item [button]="true" detail="false">
+        <ion-item [button]="true" detail="false" [routerLink]="['/servicio-resenas', servicio.id]" >
           <ion-label>
             <strong>{{ servicio.nombre }}</strong>
             <ion-text>{{ servicio.direccion }}</ion-text><br />
