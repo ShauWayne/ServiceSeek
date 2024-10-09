@@ -59,6 +59,9 @@
       <ion-buttons slot="start">
         <ion-menu-button color="light"></ion-menu-button>
       </ion-buttons>
+      <ion-button slot="end" [routerLink]="['/home']">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
       <ion-title color="light">
         <div style="display: flex; text-align: center;">
           <span style="font-size: 30px;">ServiceSeek</span>
@@ -67,23 +70,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
-    <ion-header>
-      <ion-toolbar>
+  <ion-header>
+    <ion-toolbar>
+      <ion-item [button]="true">
+        <ion-icon color="danger" slot="start" name="filter-outline" size="large"></ion-icon>
         <ion-title>Búsqueda de servicios</ion-title>
-      </ion-toolbar>
-    </ion-header>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
 
-
-    <ion-content color="light">
-      <ion-list [inset]="true">
-        <ion-item [button]="true">
-          <ion-icon color="danger" slot="start" name="list-circle" size="large"></ion-icon>
-          <ion-label>General</ion-label>
-          <ion-note slot="end">6</ion-note>
-        </ion-item>
-      </ion-list>
-    
+    <ion-content color="light" [fullscreen]="true" class="ion-padding">
       <ion-list [inset]="true" *ngFor="let servicio of servicios">
         <ion-item [button]="true" detail="false" [routerLink]="['/servicio-resenas', servicio.id]" >
           <ion-label>
@@ -98,6 +94,4 @@
         </ion-item>
       </ion-list>
     </ion-content>
-  </ion-content>
-
 </div>

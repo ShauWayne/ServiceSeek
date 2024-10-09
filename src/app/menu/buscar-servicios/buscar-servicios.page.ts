@@ -56,5 +56,4 @@ export class BuscarServiciosPage implements OnInit {
     this.router.navigate(['/login']);
 
   }
-
 }

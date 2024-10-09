@@ -1,10 +1,10 @@
 export class ClResena{
-    id: number;
+    id: string;
     id_servicio: number;
     usuario: string;
     calificacion: number;
     comentario: string;
-    fecha: string;;
+    fecha: string;
 
     constructor (obj: any){
         this.id = obj && obj.id || null

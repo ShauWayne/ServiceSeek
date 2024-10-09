@@ -1,10 +1,13 @@
 {
   "servicios": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Baño Publico",
       "tipo": "Higiene",
-      "ubicacion": { "lat": -33.4489, "lng": -70.6693 },
+      "ubicacion": {
+        "lat": -33.4489,
+        "lng": -70.6693
+      },
       "direccion": "Avenida Libertador Bernardo O'Higgins 1234",
       "descripcion": "Baño público accesible y limpio.",
       "telefono": "123456789",
@@ -13,22 +16,28 @@
       "num_resenas": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Mudador",
       "tipo": "Higiene",
-      "ubicacion": { "lat": -33.4691, "lng": -70.6420 },
+      "ubicacion": {
+        "lat": -33.4691,
+        "lng": -70.642
+      },
       "direccion": "Calle Falsa 456",
       "descripcion": "Local para mudar bebes, limpio y seguro.",
       "telefono": "987654321",
       "horario": "8:00 a 20:00",
-      "calificacion": 4.0,
+      "calificacion": 4,
       "num_resenas": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Cajero Automatico",
       "tipo": "Finanzas",
-      "ubicacion": { "lat": -33.4653, "lng": -70.6352 },
+      "ubicacion": {
+        "lat": -33.4653,
+        "lng": -70.6352
+      },
       "direccion": "Avenida Providencia 3456",
       "descripcion": "Cajero automático disponible 24/7.",
       "telefono": "N/A",
@@ -37,10 +46,13 @@
       "num_resenas": 2
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "Servicio de Taxi",
       "tipo": "Transporte",
-      "ubicacion": { "lat": -33.4488, "lng": -70.6694 },
+      "ubicacion": {
+        "lat": -33.4488,
+        "lng": -70.6694
+      },
       "direccion": "Plaza de Armas",
       "descripcion": "Servicio de taxi confiable y rápido.",
       "telefono": "555123456",
@@ -49,10 +61,13 @@
       "num_resenas": 2
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Comida Rapida",
       "tipo": "Alimentacion",
-      "ubicacion": { "lat": -33.4487, "lng": -70.6691 },
+      "ubicacion": {
+        "lat": -33.4487,
+        "lng": -70.6691
+      },
       "direccion": "Calle del Fast Food 789",
       "descripcion": "Deliciosa comida rápida disponible.",
       "telefono": "987654321",
@@ -61,10 +76,13 @@
       "num_resenas": 2
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "Estacionamiento",
       "tipo": "Transporte",
-      "ubicacion": { "lat": -33.4569, "lng": -70.6485 },
+      "ubicacion": {
+        "lat": -33.4569,
+        "lng": -70.6485
+      },
       "direccion": "Calle del Parking 123",
       "descripcion": "Estacionamiento seguro y accesible.",
       "telefono": "666789123",
@@ -73,10 +91,13 @@
       "num_resenas": 2
     },
     {
-      "id": 7,
+      "id": "7",
       "nombre": "Centro de Salud",
       "tipo": "Salud",
-      "ubicacion": { "lat": -33.4500, "lng": -70.6700 },
+      "ubicacion": {
+        "lat": -33.45,
+        "lng": -70.67
+      },
       "direccion": "Avenida de la Salud 456",
       "descripcion": "Centro de salud disponible 24/7.",
       "telefono": "111222333",
@@ -85,10 +106,13 @@
       "num_resenas": 2
     },
     {
-      "id": 8,
+      "id": "8",
       "nombre": "Biblioteca Publica",
       "tipo": "Educacion",
-      "ubicacion": { "lat": -33.4555, "lng": -70.6284 },
+      "ubicacion": {
+        "lat": -33.4555,
+        "lng": -70.6284
+      },
       "direccion": "Calle del Conocimiento 789",
       "descripcion": "Biblioteca pública con acceso a internet.",
       "telefono": "444555666",
@@ -97,10 +121,13 @@
       "num_resenas": 2
     },
     {
-      "id": 9,
+      "id": "9",
       "nombre": "Gimnasio",
       "tipo": "Deporte",
-      "ubicacion": { "lat": -33.4501, "lng": -70.6501 },
+      "ubicacion": {
+        "lat": -33.4501,
+        "lng": -70.6501
+      },
       "direccion": "Calle del Ejercicio 123",
       "descripcion": "Gimnasio equipado con máquinas modernas.",
       "telefono": "777888999",
@@ -109,10 +136,13 @@
       "num_resenas": 2
     },
     {
-      "id": 10,
+      "id": "10",
       "nombre": "Parque Publico",
       "tipo": "Recreacion",
-      "ubicacion": { "lat": -33.4400, "lng": -70.6705 },
+      "ubicacion": {
+        "lat": -33.44,
+        "lng": -70.6705
+      },
       "direccion": "Avenida de los Parques 456",
       "descripcion": "Parque público con áreas verdes y juegos.",
       "telefono": "N/A",
@@ -121,10 +151,13 @@
       "num_resenas": 2
     },
     {
-      "id": 11,
+      "id": "11",
       "nombre": "Ferreteria",
       "tipo": "Hogar",
-      "ubicacion": { "lat": -33.4420, "lng": -70.6500 },
+      "ubicacion": {
+        "lat": -33.442,
+        "lng": -70.65
+      },
       "direccion": "Calle de las Herramientas 789",
       "descripcion": "Ferretería con herramientas y materiales de construcción.",
       "telefono": "555666777",
@@ -133,10 +166,13 @@
       "num_resenas": 2
     },
     {
-      "id": 12,
+      "id": "12",
       "nombre": "Lavanderia",
       "tipo": "Hogar",
-      "ubicacion": { "lat": -33.4499, "lng": -70.6490 },
+      "ubicacion": {
+        "lat": -33.4499,
+        "lng": -70.649
+      },
       "direccion": "Calle del Lavado 456",
       "descripcion": "Lavandería autoservicio con equipos modernos.",
       "telefono": "666777888",
@@ -145,34 +181,43 @@
       "num_resenas": 2
     },
     {
-      "id": 13,
+      "id": "13",
       "nombre": "Centro Comercial",
       "tipo": "Compras",
-      "ubicacion": { "lat": -33.4550, "lng": -70.6610 },
+      "ubicacion": {
+        "lat": -33.455,
+        "lng": -70.661
+      },
       "direccion": "Calle del Shopping 321",
       "descripcion": "Centro comercial con diversas tiendas.",
       "telefono": "333444555",
       "horario": "10:00 a 22:00",
-      "calificacion": 3.0,
+      "calificacion": 3,
       "num_resenas": 2
     },
     {
-      "id": 14,
+      "id": "14",
       "nombre": "Veterinaria",
       "tipo": "Salud",
-      "ubicacion": { "lat": -33.4600, "lng": -70.6800 },
+      "ubicacion": {
+        "lat": -33.46,
+        "lng": -70.68
+      },
       "direccion": "Avenida de los Animales 654",
       "descripcion": "Veterinaria con atención a mascotas.",
       "telefono": "444333222",
       "horario": "9:00 a 18:00",
-      "calificacion": 4.0,
+      "calificacion": 4,
       "num_resenas": 2
     },
     {
-      "id": 15,
+      "id": "15",
       "nombre": "Clinica Dental",
       "tipo": "Salud",
-      "ubicacion": { "lat": -33.4520, "lng": -70.6770 },
+      "ubicacion": {
+        "lat": -33.452,
+        "lng": -70.677
+      },
       "direccion": "Calle de la Sonrisa 432",
       "descripcion": "Clínica dental con atención personalizada.",
       "telefono": "111999888",
@@ -181,10 +226,13 @@
       "num_resenas": 17
     },
     {
-      "id": 16,
+      "id": "16",
       "nombre": "Spa",
       "tipo": "Bienestar",
-      "ubicacion": { "lat": -33.4530, "lng": -70.6780 },
+      "ubicacion": {
+        "lat": -33.453,
+        "lng": -70.678
+      },
       "direccion": "Avenida del Relax 321",
       "descripcion": "Spa con masajes y tratamientos de belleza.",
       "telefono": "222111000",
@@ -193,10 +241,13 @@
       "num_resenas": 14
     },
     {
-      "id": 17,
+      "id": "17",
       "nombre": "Estudio Fotográfico",
       "tipo": "Arte",
-      "ubicacion": { "lat": -33.4610, "lng": -70.6805 },
+      "ubicacion": {
+        "lat": -33.461,
+        "lng": -70.6805
+      },
       "direccion": "Calle de las Fotos 543",
       "descripcion": "Estudio fotográfico para sesiones y eventos.",
       "telefono": "555777888",
@@ -205,10 +256,13 @@
       "num_resenas": 8
     },
     {
-      "id": 18,
+      "id": "18",
       "nombre": "Centro de Yoga",
       "tipo": "Bienestar",
-      "ubicacion": { "lat": -33.4555, "lng": -70.6300 },
+      "ubicacion": {
+        "lat": -33.4555,
+        "lng": -70.63
+      },
       "direccion": "Calle del Yoga 213",
       "descripcion": "Clases de yoga para todas las edades.",
       "telefono": "666888999",
@@ -217,10 +271,13 @@
       "num_resenas": 11
     },
     {
-      "id": 19,
+      "id": "19",
       "nombre": "Escuela de Música",
       "tipo": "Educacion",
-      "ubicacion": { "lat": -33.4450, "lng": -70.6900 },
+      "ubicacion": {
+        "lat": -33.445,
+        "lng": -70.69
+      },
       "direccion": "Calle de la Musica 321",
       "descripcion": "Clases de música para todos los niveles.",
       "telefono": "777999000",
@@ -229,10 +286,13 @@
       "num_resenas": 13
     },
     {
-      "id": 20,
+      "id": "20",
       "nombre": "Tienda de Ropa",
       "tipo": "Compras",
-      "ubicacion": { "lat": -33.4481, "lng": -70.6701 },
+      "ubicacion": {
+        "lat": -33.4481,
+        "lng": -70.6701
+      },
       "direccion": "Calle de la Moda 987",
       "descripcion": "Tienda de ropa con las últimas tendencias.",
       "telefono": "888000111",
@@ -243,15 +303,7 @@
   ],
   "resenas": [
     {
-      "id": 1,
-      "id_servicio": 1,
-      "usuario": "Juan Perez",
-      "calificacion": 5,
-      "comentario": "Muy limpio y accesible.",
-      "fecha": "2024-10-06"
-    },
-    {
-      "id": 2,
+      "id": "2",
       "id_servicio": 2,
       "usuario": "Maria Lopez",
       "calificacion": 4,
@@ -259,7 +311,7 @@
       "fecha": "2024-10-05"
     },
     {
-      "id": 3,
+      "id": "3",
       "id_servicio": 3,
       "usuario": "Luis Gonzalez",
       "calificacion": 4,
@@ -267,7 +319,7 @@
       "fecha": "2024-10-04"
     },
     {
-      "id": 4,
+      "id": "4",
       "id_servicio": 4,
       "usuario": "Ana Rodriguez",
       "calificacion": 5,
@@ -275,7 +327,7 @@
       "fecha": "2024-10-03"
     },
     {
-      "id": 5,
+      "id": "5",
       "id_servicio": 5,
       "usuario": "Carlos Martinez",
       "calificacion": 3,
@@ -283,7 +335,7 @@
       "fecha": "2024-10-02"
     },
     {
-      "id": 6,
+      "id": "6",
       "id_servicio": 6,
       "usuario": "Sofia Torres",
       "calificacion": 4,
@@ -291,7 +343,7 @@
       "fecha": "2024-10-01"
     },
     {
-      "id": 7,
+      "id": "7",
       "id_servicio": 7,
       "usuario": "Fernando Jimenez",
       "calificacion": 5,
@@ -299,7 +351,7 @@
       "fecha": "2024-09-30"
     },
     {
-      "id": 8,
+      "id": "8",
       "id_servicio": 8,
       "usuario": "Elena Gutierrez",
       "calificacion": 4,
@@ -307,7 +359,7 @@
       "fecha": "2024-09-29"
     },
     {
-      "id": 9,
+      "id": "9",
       "id_servicio": 9,
       "usuario": "Andres Ramirez",
       "calificacion": 5,
@@ -315,7 +367,7 @@
       "fecha": "2024-09-28"
     },
     {
-      "id": 10,
+      "id": "10",
       "id_servicio": 10,
       "usuario": "Laura Vázquez",
       "calificacion": 4,
@@ -323,7 +375,7 @@
       "fecha": "2024-09-27"
     },
     {
-      "id": 11,
+      "id": "11",
       "id_servicio": 11,
       "usuario": "Ricardo Silva",
       "calificacion": 5,
@@ -331,7 +383,7 @@
       "fecha": "2024-09-26"
     },
     {
-      "id": 12,
+      "id": "12",
       "id_servicio": 12,
       "usuario": "Patricia Castro",
       "calificacion": 4,
@@ -339,7 +391,7 @@
       "fecha": "2024-09-25"
     },
     {
-      "id": 13,
+      "id": "13",
       "id_servicio": 13,
       "usuario": "Daniela Morales",
       "calificacion": 3,
@@ -347,7 +399,7 @@
       "fecha": "2024-09-24"
     },
     {
-      "id": 14,
+      "id": "14",
       "id_servicio": 14,
       "usuario": "Gabriel Mendez",
       "calificacion": 4,
@@ -355,7 +407,7 @@
       "fecha": "2024-09-23"
     },
     {
-      "id": 15,
+      "id": "15",
       "id_servicio": 15,
       "usuario": "Claudia Rojas",
       "calificacion": 5,
@@ -363,7 +415,7 @@
       "fecha": "2024-09-22"
     },
     {
-      "id": 16,
+      "id": "16",
       "id_servicio": 16,
       "usuario": "Miguel Ortega",
       "calificacion": 4,
@@ -371,7 +423,7 @@
       "fecha": "2024-09-21"
     },
     {
-      "id": 17,
+      "id": "17",
       "id_servicio": 17,
       "usuario": "Veronica Salinas",
       "calificacion": 5,
@@ -379,7 +431,7 @@
       "fecha": "2024-09-20"
     },
     {
-      "id": 18,
+      "id": "18",
       "id_servicio": 18,
       "usuario": "Arturo Vargas",
       "calificacion": 4,
@@ -387,7 +439,7 @@
       "fecha": "2024-09-19"
     },
     {
-      "id": 19,
+      "id": "19",
       "id_servicio": 19,
       "usuario": "Jessica Pizarro",
       "calificacion": 5,
@@ -395,7 +447,7 @@
       "fecha": "2024-09-18"
     },
     {
-      "id": 20,
+      "id": "20",
       "id_servicio": 20,
       "usuario": "Mario Herrera",
       "calificacion": 4,
@@ -403,7 +455,7 @@
       "fecha": "2024-09-17"
     },
     {
-      "id": 21,
+      "id": "21",
       "id_servicio": 3,
       "usuario": "Roberto Soto",
       "calificacion": 5,
@@ -411,7 +463,7 @@
       "fecha": "2024-10-06"
     },
     {
-      "id": 22,
+      "id": "22",
       "id_servicio": 4,
       "usuario": "Santiago Ruiz",
       "calificacion": 4,
@@ -419,7 +471,7 @@
       "fecha": "2024-10-05"
     },
     {
-      "id": 23,
+      "id": "23",
       "id_servicio": 5,
       "usuario": "Natalia Lima",
       "calificacion": 4,
@@ -427,7 +479,7 @@
       "fecha": "2024-10-04"
     },
     {
-      "id": 24,
+      "id": "24",
       "id_servicio": 6,
       "usuario": "Fernando Castro",
       "calificacion": 5,
@@ -435,7 +487,7 @@
       "fecha": "2024-10-03"
     },
     {
-      "id": 25,
+      "id": "25",
       "id_servicio": 7,
       "usuario": "Carmen Jimenez",
       "calificacion": 5,
@@ -443,7 +495,7 @@
       "fecha": "2024-10-02"
     },
     {
-      "id": 26,
+      "id": "26",
       "id_servicio": 8,
       "usuario": "Esteban Mora",
       "calificacion": 5,
@@ -451,7 +503,7 @@
       "fecha": "2024-10-01"
     },
     {
-      "id": 27,
+      "id": "27",
       "id_servicio": 9,
       "usuario": "Pablo Ruiz",
       "calificacion": 4,
@@ -459,7 +511,7 @@
       "fecha": "2024-09-30"
     },
     {
-      "id": 28,
+      "id": "28",
       "id_servicio": 10,
       "usuario": "Gabriela Sanchez",
       "calificacion": 5,
@@ -467,7 +519,7 @@
       "fecha": "2024-09-29"
     },
     {
-      "id": 29,
+      "id": "29",
       "id_servicio": 11,
       "usuario": "Ricardo Silva",
       "calificacion": 5,
@@ -475,7 +527,7 @@
       "fecha": "2024-09-28"
     },
     {
-      "id": 30,
+      "id": "30",
       "id_servicio": 12,
       "usuario": "Patricia Castro",
       "calificacion": 4,
@@ -483,7 +535,7 @@
       "fecha": "2024-09-27"
     },
     {
-      "id": 31,
+      "id": "31",
       "id_servicio": 13,
       "usuario": "Daniela Morales",
       "calificacion": 3,
@@ -491,7 +543,7 @@
       "fecha": "2024-09-26"
     },
     {
-      "id": 32,
+      "id": "32",
       "id_servicio": 14,
       "usuario": "Gabriel Mendez",
       "calificacion": 4,
@@ -499,7 +551,7 @@
       "fecha": "2024-09-25"
     },
     {
-      "id": 33,
+      "id": "33",
       "id_servicio": 15,
       "usuario": "Claudia Rojas",
       "calificacion": 5,
@@ -507,7 +559,7 @@
       "fecha": "2024-09-24"
     },
     {
-      "id": 34,
+      "id": "34",
       "id_servicio": 16,
       "usuario": "Miguel Ortega",
       "calificacion": 4,
@@ -515,7 +567,7 @@
       "fecha": "2024-09-23"
     },
     {
-      "id": 35,
+      "id": "35",
       "id_servicio": 17,
       "usuario": "Veronica Salinas",
       "calificacion": 5,
@@ -523,7 +575,7 @@
       "fecha": "2024-09-22"
     },
     {
-      "id": 36,
+      "id": "36",
       "id_servicio": 18,
       "usuario": "Arturo Vargas",
       "calificacion": 4,
@@ -531,7 +583,7 @@
       "fecha": "2024-09-21"
     },
     {
-      "id": 37,
+      "id": "37",
       "id_servicio": 19,
       "usuario": "Jessica Pizarro",
       "calificacion": 5,
@@ -539,17 +591,33 @@
       "fecha": "2024-09-20"
     },
     {
-      "id": 38,
+      "id": "38",
       "id_servicio": 20,
       "usuario": "Mario Herrera",
       "calificacion": 4,
       "comentario": "Variedad de ropa a buen precio.",
       "fecha": "2024-09-19"
+    },
+    {
+      "id": "39",
+      "id_servicio": 2,
+      "usuario": "usuario",
+      "calificacion": 3,
+      "comentario": "Estaba cochino cuando llegué",
+      "fecha": "08-10-2024"
+    },
+    {
+      "id": "40",
+      "id_servicio": 1,
+      "usuario": "Invitado",
+      "calificacion": 3,
+      "comentario": "Buen precio y buen servicio.",
+      "fecha": "09-10-2024"
     }
   ],
   "usuarios": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Juan Perez",
       "correo": "juan@example.com",
       "contrasena": "hashed_password",
@@ -557,7 +625,7 @@
       "fecha_registro": "2024-10-01"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Isabel Martinez",
       "correo": "isabel@example.com",
       "contrasena": "hashed_password",
@@ -565,7 +633,7 @@
       "fecha_registro": "2024-10-02"
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Carlos Mendez",
       "correo": "carlos@example.com",
       "contrasena": "hashed_password",
@@ -573,7 +641,7 @@
       "fecha_registro": "2024-10-03"
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "Lucia Torres",
       "correo": "lucia@example.com",
       "contrasena": "hashed_password",
@@ -581,7 +649,7 @@
       "fecha_registro": "2024-10-04"
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Sebastian Gonzalez",
       "correo": "sebastian@example.com",
       "contrasena": "hashed_password",
@@ -589,7 +657,7 @@
       "fecha_registro": "2024-10-05"
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "Mariana Salas",
       "correo": "mariana@example.com",
       "contrasena": "hashed_password",
@@ -599,37 +667,37 @@
   ],
   "categorias": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Higiene",
       "descripcion": "Servicios relacionados con higiene personal."
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Transporte",
       "descripcion": "Servicios de transporte y mudanzas."
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Bienestar",
       "descripcion": "Servicios para el bienestar físico y mental."
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "Educacion",
       "descripcion": "Servicios educativos y de formación."
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Compras",
       "descripcion": "Servicios y productos relacionados con compras."
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "Salud",
       "descripcion": "Servicios de salud y bienestar."
     },
     {
-      "id": 7,
+      "id": "7",
       "nombre": "Entretenimiento",
       "descripcion": "Servicios de entretenimiento y ocio."
     }

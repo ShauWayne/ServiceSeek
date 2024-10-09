@@ -43,7 +43,7 @@ const routes: Routes = [
     loadChildren: () => import('./menu/terminos-y-condiciones/terminos-y-condiciones.module').then( m => m.TerminosYCondicionesPageModule)
   },
   {
-    path: 'add-resena',
+    path: 'add-resena/:id',
     loadChildren: () => import('./menu/crud/resena/add-resena/add-resena.module').then( m => m.AddResenaPageModule)
   },
   {
@@ -51,7 +51,7 @@ const routes: Routes = [
     loadChildren: () => import('./menu/crud/resena/del-resena/del-resena.module').then( m => m.DelResenaPageModule)
   },
   {
-    path: 'upd-resena',
+    path: 'upd-resena/:id',
     loadChildren: () => import('./menu/crud/resena/upd-resena/upd-resena.module').then( m => m.UpdResenaPageModule)
   },
   {

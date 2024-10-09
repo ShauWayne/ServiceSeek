@@ -47,7 +47,7 @@ export class LoginPage implements OnInit{
   async onLogin(){
     if (this.formLogin.valid) {
       console.log('Formulario válido, guardando...', this.formLogin.value);
-      this.authService.login();
+      this.authService.login(this.formLogin.value.username);
       console.log('Usuario Autenticado: ',this.authService.isLoggedIn());
       this.router.navigate(['/home']);
     } else {

@@ -79,6 +79,32 @@ export class ServicioResenasPage implements OnInit {
     })
   }
 
+  async delResena(id:string){
+    console.log('Iniciando eliminación de Reseña...');
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+    });
+    await loading.present();
+    console.log('Ingresando a ApiRest');
+    await this.apiRestService.delResena(id)
+    .subscribe({
+      next: (data) => {
+        console.log('Data: ',data);
+        loading.dismiss();
+        if (data == null){
+          console.log('No se eliminaron datos, data = null');
+          return
+        }
+        console.log('Se eliminaron datos, router: ',this.router);
+        this.router.navigate(['/servicio-resenas', this.servicio.id]);
+      },
+      error: (error) => {
+        console.error('Error al eliminar la resena:', error);
+        loading.dismiss();
+      }
+    });
+  }
+
 
   logout(){
     console.log('Cerrando sesión... ');
@@ -86,5 +112,10 @@ export class ServicioResenasPage implements OnInit {
     this.router.navigate(['/login']);
 
   }
+
+  volver(){
+    this.router.navigate(['..']);
+  }
+
 
 }

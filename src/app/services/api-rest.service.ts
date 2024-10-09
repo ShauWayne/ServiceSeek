@@ -131,7 +131,7 @@ export class ApiRestService {
   }
 
   // Borrar una reseña
-  delResena(id: number): Observable<ClResena> {
+  delResena(id: string): Observable<ClResena> {
     console.log('Eliminando reseña Id: ', id, '...');
     return this.http.delete<ClResena>(apiUrl + "/resenas" + "/" + id, httpOptions)
     .pipe(
