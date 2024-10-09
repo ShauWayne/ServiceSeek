@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { RegisterModalComponent } from '../register-modal/register-modal.component';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -29,7 +29,7 @@ export class LoginPage implements OnInit{
 
   ngOnInit() {
   }
-
+  
   async openRegisterModal() {
     const modal = await this.modalCtrl.create({
       component: RegisterModalComponent,
@@ -49,7 +49,10 @@ export class LoginPage implements OnInit{
       console.log('Formulario válido, guardando...', this.formLogin.value);
       this.authService.login(this.formLogin.value.username);
       console.log('Usuario Autenticado: ',this.authService.isLoggedIn());
-      this.router.navigate(['/home']);
+      let navExtra: NavigationExtras = {
+        state: {user: this.formLogin.value.username}
+      };
+      this.router.navigate(['/home'], navExtra);
     } else {
       console.log('Formulario no válido, revisa los campos.');
       this.formLogin.markAllAsTouched();

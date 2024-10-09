@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ModalController } from '@ionic/angular'
 import { AnimationController } from '@ionic/angular';
 import type { IonModal } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 @Component({
@@ -11,10 +11,24 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  navigationValue: any;
   isModalOpen = false;
   @ViewChild('modal', { static: true }) modal!: IonModal;
 
-  constructor(private modalCtrl: ModalController, private animationCtrl: AnimationController, private router: Router, private auth: AuthenticationService) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private animationCtrl: AnimationController,
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private auth: AuthenticationService) 
+    {
+      this.activeRoute.queryParams.subscribe(params => {
+        const navigation = this.router.getCurrentNavigation();
+        if (navigation?.extras.state) {
+          this.navigationValue = navigation.extras.state['user'];
+          console.log(this.navigationValue);
+        }
+      });    }
 
   openModal() {
     this.isModalOpen = true;
