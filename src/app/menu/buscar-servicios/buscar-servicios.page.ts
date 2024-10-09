@@ -13,7 +13,7 @@ import { ApiRestService } from '../../services/api-rest.service';
 })
 export class BuscarServiciosPage implements OnInit {
 
-  servicios: ClServicio[] = [];
+  servicios: ClServicio[] = [];//Array de Clase servicio
 
   constructor(
     //public SqlLiteService: DatabaseService,
@@ -26,23 +26,23 @@ export class BuscarServiciosPage implements OnInit {
     this.cargarServicios();  //Ejecuta función al iniciar
   }
 
-  async cargarServicios(){
+  async cargarServicios(){//Función para obtener todos los servicios
     console.log('Iniciando carga de Servicios...');
-    const loading = await this.loadingController.create({
+    const loading = await this.loadingController.create({//Ventana de carga
       message: 'Cargando...',
     });
-    await loading.present();
+    await loading.present();//Muestra carga en pantalla
     console.log('Ingresando a ApiRest');
-    await this.apiRestService.getServicios()
-    .subscribe({
-      next: (data) => {
+    await this.apiRestService.getServicios()//Obtiene todos los servicios desde api-rest.services.ts
+    .subscribe({//Los suscribe
+      next: (data) => {//Ingresa la respuesta en data
         console.log('Data: ',data);
-        this.servicios = data;
+        this.servicios = data;//Ingresa valor de data en Array servicios de Clase Servicio
         console.log('Servicios: ',this.servicios);
-        loading.dismiss();
+        loading.dismiss();//Cierra ventana de carga
       },
       complete: () => {},
-      error: (error) => {
+      error: (error) => {//Arroja error en caso de Falla
         console.error('Error al obtener los servicios:', error);
         loading.dismiss();
       },

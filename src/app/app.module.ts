@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, IonMaxValidator } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
@@ -11,6 +11,8 @@ import { DatePickerModalComponent } from './date-picker-modal/date-picker-modal.
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 import { provideHttpClient } from '@angular/common/http'; // Importa esto
 import { SQLite } from '@ionic-native/sqlite/ngx';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { Drivers } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
     AppRoutingModule,
     InputModule,
     FormsModule,
-    ReactiveFormsModule, // Agrega ReactiveFormsModule aquí
+    ReactiveFormsModule,
   ],
   providers: [
     provideHttpClient(),

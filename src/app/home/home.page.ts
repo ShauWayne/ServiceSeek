@@ -11,8 +11,8 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  navigationValue: any;
-  isModalOpen = false;
+  navigationValue: any; // Variable para almacenar el valor del usuario
+  isModalOpen = false; // Boolean para abrir modal
   @ViewChild('modal', { static: true }) modal!: IonModal;
 
   constructor(
@@ -22,13 +22,15 @@ export class HomePage implements OnInit {
     private activeRoute: ActivatedRoute,
     private auth: AuthenticationService) 
     {
-      this.activeRoute.queryParams.subscribe(params => {
-        const navigation = this.router.getCurrentNavigation();
-        if (navigation?.extras.state) {
-          this.navigationValue = navigation.extras.state['user'];
+      
+      this.activeRoute.queryParams.subscribe(params => { //Suscribe parámetros de la ruta activa
+        const navigation = this.router.getCurrentNavigation();// Obtiene la navegación actual
+        if (navigation?.extras.state) { // Si hay datos extra...
+          this.navigationValue = navigation.extras.state['user'];// ... Los guarda en la variable
           console.log(this.navigationValue);
         }
-      });    }
+      });    
+    }
 
   openModal() {
     this.isModalOpen = true;

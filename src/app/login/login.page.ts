@@ -44,18 +44,18 @@ export class LoginPage implements OnInit{
     return await modal.present();
   }
 
-  async onLogin(){
-    if (this.formLogin.valid) {
+  async onLogin(){ // Inicio de  sesión
+    if (this.formLogin.valid) { //Fomulario válido
       console.log('Formulario válido, guardando...', this.formLogin.value);
-      this.authService.login(this.formLogin.value.username);
+      this.authService.login(this.formLogin.value.username);//Inicia Sesión con authService
       console.log('Usuario Autenticado: ',this.authService.isLoggedIn());
-      let navExtra: NavigationExtras = {
-        state: {user: this.formLogin.value.username}
+      let navExtra: NavigationExtras = { //Interpolación
+        state: {user: this.formLogin.value.username} //Enviamos nombre de usuario
       };
-      this.router.navigate(['/home'], navExtra);
+      this.router.navigate(['/home'], navExtra); //Navega enviando Dato a home.page.ts
     } else {
       console.log('Formulario no válido, revisa los campos.');
-      this.formLogin.markAllAsTouched();
+      this.formLogin.markAllAsTouched(); //Borra los datos del Form
     }
     
   }

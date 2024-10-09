@@ -14,15 +14,15 @@ import { FormControl, FormBuilder, FormGroup, NgForm, Validators } from '@angula
 })
 export class AddResenaPage implements OnInit {
   formResena!: FormGroup;
-  servicio: ClServicio = new ClServicio({});
-  resena: ClResena = new ClResena({});
-  public servicioId = parseInt(this.route.snapshot.paramMap.get('id')!);
-  maxId = 0;
+  servicio: ClServicio = new ClServicio({});//Variable servicio de tipo ClServicio
+  resena: ClResena = new ClResena({});//Variable de reseña de tipo CsResena
+  public servicioId = parseInt(this.route.snapshot.paramMap.get('id')!);//Transforma valor a int
+  maxId = 0;//Variable para obtener ID de reseña más alto
 
   constructor(
     //public SqlLiteService: DatabaseService,
     private formBuilder: FormBuilder,
-    public apiRestService: ApiRestService,
+    public apiRestService: ApiRestService,//Instancia el ApiRest de JSON
     public loadingController: LoadingController,
     public alertController: AlertController,
     public router: Router,
@@ -31,54 +31,54 @@ export class AddResenaPage implements OnInit {
 
   ngOnInit() {
     this.cargarServicio();  //Ejecuta función al iniciar
-    this.formResena = this.formBuilder.group({
+    this.formResena = this.formBuilder.group({//Genera formulario
       "fCalificacion": [null, Validators.required],
       "fComentario": [null, Validators.required],
     });
   }
 
-  async onFormSubmit(form: NgForm){
+  async onFormSubmit(form: NgForm){//Carga formulario al iniciar page
     console.log("Enviando formulario...");
-    const loading = await this.loadingController.create({
+    const loading = await this.loadingController.create({//Crea mensaje de carga
       message: 'Cargando...',
     });
-    await loading.present();
+    await loading.present();//Muestra mensaje en pantalla
 
-    await this.apiRestService.getResenas().subscribe({
-      next: (resenas) => {
-        if (resenas && resenas.length > 0) {
+    await this.apiRestService.getResenas().subscribe({//Obtiene los valores de id para saber el valor que tendrá la id de la nueva reseña
+      next: (resenas) => {//Las ingresa en variable resenas
+        if (resenas && resenas.length > 0) {//Busca que al menos haya 1 reseña
           this.maxId = Math.max(...resenas.map(r => Number(r.id))); // Obtener el ID máximo actual
           console.log("AQUI ESTA R!!!!",this.maxId)
         }
       },
-      complete: async () => {
-      const nuevaResena: ClResena = {
-        id: String(this.maxId + 1),
-        id_servicio: this.servicioId,
-        usuario: this.auth.getUsuario(),
+      complete: async () => {//Si se obtuvieron valores..
+      const nuevaResena: ClResena = {//Se ingresan al objeto nueva reseña
+        id: String(this.maxId + 1),//Crea el id sumando 1 a la id más alta
+        id_servicio: this.servicioId,//Obtiene el valor desde el servicio actual
+        usuario: this.auth.getUsuario(),//Obtiene el nombre del usuario desde el auth
         calificacion: this.formResena.value.fCalificacion,
         comentario: this.formResena.value.fComentario,
-        fecha: new Date().toLocaleDateString('es-CL'),
+        fecha: new Date().toLocaleDateString('es-CL'),//Obtiene fecha desde sistema
       };
-    await this.apiRestService.addResena(nuevaResena)
-    .subscribe({
-      next: (data) => {
+    await this.apiRestService.addResena(nuevaResena)//Agrega reseña desde el objeto antes creado
+    .subscribe({//suscribe los datos de la consulta
+      next: (data) => {//los guarda en data
         console.log('Data: ',data);
-        loading.dismiss();
-        if (data == null){
+        loading.dismiss();//Cierra ventana de carga
+        if (data == null){//Si la respuesta es null el agregar objeto falló
           console.log('No se añadieron datos, data = null');
           return
         }
         console.log('Se añaden datos, router: ',this.router);
-        this.router.navigate(['/servicio-resenas', this.servicioId]);
+        this.router.navigate(['/servicio-resenas', this.servicioId]);//Redirige al listado de servicios
       },
-      error: (error) => {
+      error: (error) => {//En caso de error muestra en pantalla
         console.error('Error al agregar la resena:', error);
         loading.dismiss();
       }
     });
   },
-  error: (error) => {
+  error: (error) => {//En caso de no poder obtener los valores de reseña indica error 
     console.error('Error al obtener reseñas para el cálculo de ID:', error);
     loading.dismiss();
   }
@@ -86,34 +86,34 @@ export class AddResenaPage implements OnInit {
   }
     
 
-  async cargarServicio(){
-    console.log('Iniciando carga de Servicio id:'+this.route.snapshot.paramMap.get('id')+'...');
-    const loading = await this.loadingController.create({
+  async cargarServicio(){//Carga los valores del servicio al que se va a reseñar
+    console.log('Iniciando carga de Servicio id:'+this.route.snapshot.paramMap.get('id')+'...');//Obtiene id desde barra de navegación
+    const loading = await this.loadingController.create({//Mensaje de carga en pantalla...
       message: 'Cargando...',
     });
-    await loading.present();
+    await loading.present();//Muestra ventana de carga
     console.log('Ingresando a ApiRest');
     const servicioId = parseInt(this.route.snapshot.paramMap.get('id')!);//Pasamos el valor a number
-    await this.apiRestService.getServicio(servicioId)
+    await this.apiRestService.getServicio(servicioId)//Obtiene los valores del servicio por id desde api-rest.service.ts
     .subscribe({
-      next: (data) => {
+      next: (data) => {//Agrega la respuesta a data
         console.log('Data: ',data);
-        this.servicio = data;
+        this.servicio = data;//La ingresa a la instancia de servicio
         console.log('Servicio: ',this.servicio);
-        loading.dismiss();
+        loading.dismiss();//Cierra ventana de carga
       },
       complete: () => {},
-      error: (error) => {
+      error: (error) => {//En caso de error lo indica en la consola
         console.error('Error al obtener el servicio:', error);
-        loading.dismiss();
+        loading.dismiss();//Cierra ventana de carga
       },
     })
   }
 
   logout(){
     console.log('Cerrando sesión... ');
-    this.auth.logout();
-    this.router.navigate(['/login']);
+    this.auth.logout();//Cierra sesión desde el guard
+    this.router.navigate(['/login']);//Redirige al login
 
   }
 
