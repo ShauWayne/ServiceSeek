@@ -6,7 +6,7 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { Geolocation } from '@capacitor/geolocation';
 import { Capacitor } from '@capacitor/core';
-
+declare var google: any; // Declaración de la variable global google para usar la API de Google Maps
 
 @Component({
   selector: 'app-home',
@@ -17,6 +17,8 @@ export class HomePage implements OnInit {
   navigationValue: any; // Variable para almacenar el valor del usuario
   isModalOpen = false; // Boolean para abrir modal
   @ViewChild('modal', { static: true }) modal!: IonModal;
+  mapElement: any;
+  map: any;
 
   constructor(
     private modalCtrl: ModalController,
@@ -108,6 +110,21 @@ export class HomePage implements OnInit {
       console.error('Error al solicitar la ubicación:', error);
     }
   }
+  loadMap(latitude: number, longitude: number) {
+    const mapOptions: google.maps.MapOptions = {
+      center: { lat: latitude, lng: longitude },
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    };
+  
+    // Asegúrate de que google esté definido
+    if (typeof google !== 'undefined' && google.maps) {
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    } else {
+      console.error('Google Maps library is not loaded.');
+    }
+  }
+  
 
   openModal() {
     this.isModalOpen = true;
