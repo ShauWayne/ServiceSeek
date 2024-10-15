@@ -27,7 +27,6 @@
     </ion-list><br>
     <ion-list lines="none" style="display: flex; flex-direction: column; height: 85%">
       <ion-item style="font-size: large; margin-bottom: 5px;"  routerLink="/buscar-servicio">
-
         <ion-icon aria-hidden="false" slot="start" name="locate-outline" size="medium"></ion-icon>
         <ion-label>Buscar Servicios</ion-label>
       </ion-item>
@@ -66,6 +65,9 @@
           <span style="font-size: 30px;">ServiceSeek</span>
         </div>
       </ion-title>
+      <ion-button (click)="cargarPagina()" slot="end">
+        <ion-icon name="reload-outline" color="white"></ion-icon>
+      </ion-button>
     </ion-toolbar>
   </ion-header>
 

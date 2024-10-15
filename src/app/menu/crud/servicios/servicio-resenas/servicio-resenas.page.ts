@@ -117,5 +117,9 @@ export class ServicioResenasPage implements OnInit {
     this.router.navigate(['..']);
   }
 
+  cargarPagina(){
+    window.location.reload();
+  }
+
 
 }

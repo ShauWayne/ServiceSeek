@@ -28,6 +28,7 @@ import { Drivers } from '@ionic/storage';
     InputModule,
     FormsModule,
     ReactiveFormsModule,
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     provideHttpClient(),

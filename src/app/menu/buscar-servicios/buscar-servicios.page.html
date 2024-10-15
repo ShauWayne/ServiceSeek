@@ -29,7 +29,7 @@
         <ion-icon aria-hidden="true" slot="start" name="locate-outline" size="medium"></ion-icon>
         <ion-label>Buscar Servicios</ion-label>
       </ion-item>
-      <ion-item style="font-size: large; margin-bottom: 5px;">
+      <ion-item style="font-size: large; margin-bottom: 5px;" routerLink="/mapa">
         <ion-icon aria-hidden="true" slot="start" name="map-sharp" size="medium"></ion-icon>
         <ion-label>Mapa</ion-label>
       </ion-item>
@@ -60,7 +60,7 @@
         <ion-menu-button color="light"></ion-menu-button>
       </ion-buttons>
       <ion-button slot="end" [routerLink]="['/home']">
-            <ion-icon name="arrow-back-outline"></ion-icon>
+            <ion-icon name="home-outline"></ion-icon>
       </ion-button>
       <ion-title color="light">
         <div style="display: flex; text-align: center;">
@@ -74,6 +74,9 @@
     <ion-toolbar>
       <ion-item [button]="true">
         <ion-icon color="danger" slot="start" name="filter-outline" size="large"></ion-icon>
+        <ion-button (click)="cargarPagina()" slot="end">
+          <ion-icon name="reload-outline" color="white"></ion-icon>
+        </ion-button>
         <ion-title>Búsqueda de servicios</ion-title>
       </ion-item>
     </ion-toolbar>

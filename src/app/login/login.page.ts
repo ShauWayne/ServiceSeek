@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { NavigationExtras, Router } from '@angular/router';
 import { RegisterModalComponent } from '../register-modal/register-modal.component';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../auth/authentication.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,9 @@ export class LoginPage implements OnInit{
     private modalCtrl: ModalController,
     private router:Router,
     private fbl: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private navCtrl: NavController,
+    private storage: Storage
   ) {
     this.formLogin = this.fbl.group({
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
@@ -27,9 +30,25 @@ export class LoginPage implements OnInit{
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {}
+
+  async onLogin(){ // Inicio de  sesión
+    const userForm:string = this.formLogin.value.username;
+    const passForm:string = this.formLogin.value.password;
+    if (this.formLogin.valid) { //Fomulario válido
+      console.log('Formulario válido, guardando...', this.formLogin.value);
+      const loggedIn = await this.authService.login(userForm, passForm);
+      if (loggedIn){
+        console.log('Usuario Autenticado: ',this.authService.isLoggedIn());
+        let navExtra: NavigationExtras = { state: {user: this.formLogin.value.username}}; //Enviamos nombre de usuario por Interpolación
+        this.router.navigate(['/home'], navExtra); //Navega enviando Dato a home.page.ts
+      }
+    }else {
+      console.log('Formulario no válido, revisa los campos.');
+      this.formLogin.markAllAsTouched(); //Borra los datos del Form
+    }
   }
-  
+
   async openRegisterModal() {
     const modal = await this.modalCtrl.create({
       component: RegisterModalComponent,
@@ -42,22 +61,6 @@ export class LoginPage implements OnInit{
       component: RecuperarPasswordComponent,
     });
     return await modal.present();
-  }
-
-  async onLogin(){ // Inicio de  sesión
-    if (this.formLogin.valid) { //Fomulario válido
-      console.log('Formulario válido, guardando...', this.formLogin.value);
-      this.authService.login(this.formLogin.value.username);//Inicia Sesión con authService
-      console.log('Usuario Autenticado: ',this.authService.isLoggedIn());
-      let navExtra: NavigationExtras = { //Interpolación
-        state: {user: this.formLogin.value.username} //Enviamos nombre de usuario
-      };
-      this.router.navigate(['/home'], navExtra); //Navega enviando Dato a home.page.ts
-    } else {
-      console.log('Formulario no válido, revisa los campos.');
-      this.formLogin.markAllAsTouched(); //Borra los datos del Form
-    }
-    
   }
 
   // Función para abrir el modal de redes sociales

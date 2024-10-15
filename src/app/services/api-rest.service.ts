@@ -4,8 +4,9 @@ import { ClResena } from '../menu/crud/resena/model/ClResena';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { ClUsuario } from '../menu/crud/usuarios/model/ClUsuario';
 
-const apiUrl = 'http://192.168.56.1:3000'; // URL jason-server
+const apiUrl = 'http://192.168.56.1:3000'; // URL json-server
 const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }; // Cabecera que especifica el tipo de contenido, en este caso Json
 
 @Injectable({
@@ -139,4 +140,28 @@ export class ApiRestService {
       catchError(this.handleError<ClResena>('getResena'))
     );
   }
+
+  /////////////////////////////////////////////////////////
+  ////////////////CRUD USUARIOS///////////////////////////
+  /////////////////////////////////////////////////////////
+
+  // Obtener todos los usuarios
+  getUsuarios(): Observable<ClUsuario[]> {
+    console.log("Obteniendo usuarios...");
+    return this.http.get<ClUsuario[]>(apiUrl + "/usuarios")
+    .pipe(
+        tap(usuarios => console.log('Usuarios obtenidos')),
+        catchError(this.handleError('getUsuarios', []))
+      );
+  }
+
+  getUsuario(correo: string): Observable<ClUsuario[]> {
+    console.log('Obteniendo usuario: ', correo);
+    return this.http.get<ClUsuario[]>(apiUrl + "/usuarios?correo=" + correo)
+    .pipe(
+      tap(_ => console.log(`usuario obtenido = ${correo}`)),
+      catchError(this.handleError<ClUsuario[]>('getUsuario'))
+    );
+  }
+
 }

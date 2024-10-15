@@ -52,10 +52,11 @@ export class AddResenaPage implements OnInit {
         }
       },
       complete: async () => {//Si se obtuvieron valores..
+      const nombreUsuario = await this.auth.getUsuario();
       const nuevaResena: ClResena = {//Se ingresan al objeto nueva reseña
         id: String(this.maxId + 1),//Crea el id sumando 1 a la id más alta
         id_servicio: this.servicioId,//Obtiene el valor desde el servicio actual
-        usuario: this.auth.getUsuario(),//Obtiene el nombre del usuario desde el auth
+        usuario: nombreUsuario,//Obtiene el nombre del usuario desde el auth
         calificacion: this.formResena.value.fCalificacion,
         comentario: this.formResena.value.fComentario,
         fecha: new Date().toLocaleDateString('es-CL'),//Obtiene fecha desde sistema

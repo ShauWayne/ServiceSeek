@@ -49,6 +49,10 @@ export class BuscarServiciosPage implements OnInit {
     })
   }
 
+  cargarPagina(){
+    window.location.reload();
+  }
+
 
   logout(){
     console.log('Cerrando sesión... ');
