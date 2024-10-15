@@ -5,7 +5,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
-const apiUrl = 'http://localhost:3000'; // URL jason-server
+const apiUrl = 'http://192.168.56.1:3000'; // URL jason-server
 const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }; // Cabecera que especifica el tipo de contenido, en este caso Json
 
 @Injectable({
