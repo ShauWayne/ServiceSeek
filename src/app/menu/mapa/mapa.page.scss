@@ -1,12 +1,74 @@
-.map {
+#map {
   position: absolute;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  background-color: transparent;
-  opacity: 0;
-  transition: opacity 150ms ease-in;
 }
 
-.map.visible {
-  opacity: 1;
+ion-toolbar { /*Barra superior*/
+  --background: #f17961;
 }
+ion-content { /*Contenido central de la app*/
+  #header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-style: bold;
+
+      h1 {
+          font-weight: 700;
+          font-size: 30px;
+          color: #F17961;
+          margin-bottom: 15%;
+      }
+
+      img {
+          margin-top: -40px;
+          width: 300px;
+          height: 300px;
+          /*border-radius: 50%;
+          border: 5px solid #287078;*/
+      }
+  }
+
+  ion-card { /*Card que puede ser aplicado en cualquier parte de la APP*/
+      background: #e7eff6;
+      margin-top: -250px;
+      padding-left: 30px;
+      padding-right: 30px;
+  }
+
+
+  ion-button-reset { /*Boton para recuperar clave*/
+      --background: var(--ion-color-danger);
+      
+  }
+}
+
+.metadata-end-wrapper {
+  position: absolute;
+
+  top: 10px;
+  inset-inline-end: 10px;
+
+  font-size: 0.8rem;
+
+  display: flex;
+  align-items: center;
+}
+
+ion-label strong {
+  display: block;
+
+  max-width: calc(100% - 60px);
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+ion-label ion-note {
+  font-size: 0.9rem;
+}
+

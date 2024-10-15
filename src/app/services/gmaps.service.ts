@@ -1,35 +1,34 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { error } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GmapsService {
+  private mapsApiIsLoad:boolean=false;
 
   constructor() { }
 
-  loadGoogleMaps(): Promise<any> {
-    const win = window as any;
-    const gModule = win.google;
-    if(gModule && gModule.maps) {
-     return Promise.resolve(gModule.maps);
-    }
+  loadGoogleMaps(): Promise<void> {
     return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src =
-        'https://maps.googleapis.com/maps/api/js?key=' +
-        environment.googleMapsApiKey;
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-      script.onload = () => {
-        const loadedGoogleModule = win.google;
-        if(loadedGoogleModule && loadedGoogleModule.maps) {
-          resolve(loadedGoogleModule.maps);
-        } else {
-          reject('Google Map SDK is not Available');
-        }
-      };
+      if(this.mapsApiIsLoad) {
+        resolve();
+        return;
+      } 
+        
+    const script = document.createElement('script');
+    script.src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDCEc30W1iJ1XhzrJxfX4ximgysO-ltpv';
+    script.async=true;
+    script.defer=true;
+    script.onload = () => {
+      this.mapsApiIsLoad=true;
+      resolve();
+    };
+    script.onerror = (error) => {
+      reject('Error cargando API de Google Maps: ${error}');
+    };
+
+    document.head.appendChild(script);
     });
   }
   

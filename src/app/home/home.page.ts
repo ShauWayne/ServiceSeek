@@ -139,4 +139,9 @@ export class HomePage implements OnInit {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
+
+  irAMapa() {
+    console.log('Cargando mapa... ');
+    this.router.navigate(['/mapa']);
+  }
 }
