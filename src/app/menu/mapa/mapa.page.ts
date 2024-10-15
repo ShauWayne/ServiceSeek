@@ -23,7 +23,7 @@ export class MapaPage implements OnInit, OnDestroy{
   
   map = null;
 
-  constructor(private router: Router) { } // Inyectar el router en el constructor
+  constructor(private router: Router, private auth: AuthenticationService, private loadingController: LoadingController) { } // Inyectar el router en el constructor
   ngOnDestroy(): void {
     if (this.map) {
       google.maps.event.clearInstanceListeners(this.map);
@@ -58,12 +58,13 @@ export class MapaPage implements OnInit, OnDestroy{
       if (mapEle) {
         this.map = new google.maps.Map(mapEle, {center: myLatLng, zoom: 16});
         console.log('Mapa cargado correctamente');
-      });
-    } else {
-      console.error('El elemento con ID "map" no se encontró en el DOM.');
-    }
+      }
+      else {
+        console.error('El elemento con ID "map" no se encontró en el DOM.');
+      }
+    });
   }
-  
+
 
   addMarker(marker: Marker) {
     const markerObj = new google.maps.Marker({
@@ -78,5 +79,9 @@ export class MapaPage implements OnInit, OnDestroy{
     console.log('Cerrar sesión');
     this.auth.logout();
     this.router.navigate(['/login']);
+  }
+
+  recargar(){
+    window.location.reload();
   }
 }
