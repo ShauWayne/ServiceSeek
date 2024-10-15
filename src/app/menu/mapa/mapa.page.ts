@@ -1,5 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Importar Router para redirigir si es necesario
+import { LoadingController } from '@ionic/angular';
+import { Geolocation } from '@capacitor/geolocation';
+
 declare var google: any;
 
 interface Marker {
@@ -19,41 +22,62 @@ export class MapaPage implements OnInit, OnDestroy{
   
   map = null;
 
-  constructor(private router: Router) { } // Inyectar el router en el constructor
+  constructor(private router: Router, private loadingController: LoadingController) { } // Inyectar el router en el constructor
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    if (this.map) {
+      google.maps.event.clearInstanceListeners(this.map);
+      this.map = null;
+    }
   }
 
   ngOnInit() {
     this.loadMap();
   }
 
-  loadMap() {
-    console.log('Intentando cargar el mapa...');
-    const mapEle: HTMLElement | null = document.getElementById('map');
-    if (mapEle) {
-      const myLatLng = { lat: -33.45694, lng: -70.64827 };
-      this.map = new google.maps.Map(mapEle, {
-        center: myLatLng,
-        zoom: 12,
-      });
-      google.maps.event.addListenerOnce(this.map, 'idle', () => {
-        mapEle.classList.add('show-map');
+  async loadMap() {
+    this.map = null;
+    const loading = await this.loadingController.create({//Ventana de carga
+      message: 'Cargando...',
+    });
+    await loading.present();//Muestra carga en pantalla
+
+    const ubiActual = async () => {
+      const coordinates = await Geolocation.getCurrentPosition();
+      return {
+        lat: coordinates.coords.latitude,
+        lng: coordinates.coords.longitude,
+      };
+    };
+
+    const myLatLng = await ubiActual();
+
+    setTimeout(() => {
+      console.log('Intentando cargar el mapa...');
+      const mapEle: HTMLElement | null = document.getElementById('map');
+      if (mapEle) {
+        this.map = new google.maps.Map(mapEle, {center: myLatLng, zoom: 16});
         console.log('Mapa cargado correctamente');
-      });
-    } else {
-      console.error('El elemento con ID "map" no se encontró en el DOM.');
-    }
+      } else {
+        console.error('El elemento con ID "map" no se encontró en el DOM.');
+      }
+      new google.maps.Marker({position: myLatLng, map: this.map, title:'Ubicación actual'});
+
+      loading.dismiss();
+    },500);       
+  }
+
+  recargar(){
+    window.location.reload();
   }
   
 
-  addMarker(marker: Marker) {
+  /*addMarker(marker: Marker) {
     const markerObj = new google.maps.Marker({
       position: marker.position,
       title: marker.title,
       map: this.map,
     });
-  }
+  }*/
 
   // Implementación del método logout
   logout() {

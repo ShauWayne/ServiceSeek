@@ -58,7 +58,7 @@ const routes: Routes = [
     path: 'servicio-resenas/:id',
     loadChildren: () => import('./menu/crud/servicios/servicio-resenas/servicio-resenas.module').then( m => m.ServicioResenasPageModule)
   },
-  //{ path: '**', redirectTo: '404' },
+  { path: '**', redirectTo: '404' },
 
   
 
