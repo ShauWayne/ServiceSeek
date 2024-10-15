@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Importar Router para redirigir si es necesario
 import { LoadingController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 declare var google: any;
 
@@ -22,7 +23,7 @@ export class MapaPage implements OnInit, OnDestroy{
   
   map = null;
 
-  constructor(private router: Router, private loadingController: LoadingController) { } // Inyectar el router en el constructor
+  constructor(private router: Router, private loadingController: LoadingController, private auth: AuthenticationService) { } // Inyectar el router en el constructor
   ngOnDestroy(): void {
     if (this.map) {
       google.maps.event.clearInstanceListeners(this.map);
@@ -71,19 +72,10 @@ export class MapaPage implements OnInit, OnDestroy{
   }
   
 
-  /*addMarker(marker: Marker) {
-    const markerObj = new google.maps.Marker({
-      position: marker.position,
-      title: marker.title,
-      map: this.map,
-    });
-  }*/
-
   // Implementación del método logout
   logout() {
     console.log('Cerrar sesión');
-    // Aquí podrías agregar la lógica para eliminar datos de sesión o tokens
-    // Redirigir al usuario a la página de inicio de sesión, por ejemplo:
-    this.router.navigate(['/login']); // Redirige a la página de inicio de sesión o donde prefieras
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
 }

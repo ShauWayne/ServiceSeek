@@ -663,6 +663,14 @@
       "contrasena": "hashed_password",
       "foto_perfil": "url_to_profile_photo_6",
       "fecha_registro": "2024-10-06"
+    },
+    {
+      "id": "7",
+      "nombre": "Matias Morales",
+      "correo": "mmorales@duocuc.cl",
+      "contrasena": "Elmora2024,.-",
+      "foto_perfil": "url_to_profile_photo_6",
+      "fecha_registro": "2024-10-01"
     }
   ],
   "categorias": [

@@ -24,39 +24,48 @@ const routes: Routes = [
 
   {
     path: 'buscar-servicio',
-    loadChildren: () => import('./menu/buscar-servicios/buscar-servicios.module').then( m => m.BuscarServiciosPageModule)
+    loadChildren: () => import('./menu/buscar-servicios/buscar-servicios.module').then( m => m.BuscarServiciosPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'mapa',
-    loadChildren : () => import('./menu/mapa/mapa.module').then( m => m.MapaPageModule)
+    loadChildren : () => import('./menu/mapa/mapa.module').then( m => m.MapaPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'favorites',
-    loadChildren: () => import('./menu/ubicaciones-guardadas/ubicaciones-guardadas.module').then( m => m.UbicacionesGuardadasPageModule)
+    loadChildren: () => import('./menu/ubicaciones-guardadas/ubicaciones-guardadas.module').then( m => m.UbicacionesGuardadasPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'settings',
-    loadChildren: () => import('./menu/settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./menu/settings/settings.module').then( m => m.SettingsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'terminos-y-condiciones',
-    loadChildren: () => import('./menu/terminos-y-condiciones/terminos-y-condiciones.module').then( m => m.TerminosYCondicionesPageModule)
+    loadChildren: () => import('./menu/terminos-y-condiciones/terminos-y-condiciones.module').then( m => m.TerminosYCondicionesPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-resena/:id',
-    loadChildren: () => import('./menu/crud/resena/add-resena/add-resena.module').then( m => m.AddResenaPageModule)
+    loadChildren: () => import('./menu/crud/resena/add-resena/add-resena.module').then( m => m.AddResenaPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'del-resena',
-    loadChildren: () => import('./menu/crud/resena/del-resena/del-resena.module').then( m => m.DelResenaPageModule)
+    loadChildren: () => import('./menu/crud/resena/del-resena/del-resena.module').then( m => m.DelResenaPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'upd-resena/:id',
-    loadChildren: () => import('./menu/crud/resena/upd-resena/upd-resena.module').then( m => m.UpdResenaPageModule)
+    loadChildren: () => import('./menu/crud/resena/upd-resena/upd-resena.module').then( m => m.UpdResenaPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'servicio-resenas/:id',
-    loadChildren: () => import('./menu/crud/servicios/servicio-resenas/servicio-resenas.module').then( m => m.ServicioResenasPageModule)
+    loadChildren: () => import('./menu/crud/servicios/servicio-resenas/servicio-resenas.module').then( m => m.ServicioResenasPageModule),
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '404' },
 

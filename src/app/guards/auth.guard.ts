@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
+import { Observable, async } from 'rxjs';
+import { Storage } from '@ionic/storage-angular';
 import { AuthenticationService } from '../auth/authentication.service'; // Asegúrate de importar el servicio
 
 @Injectable({
@@ -8,17 +9,22 @@ import { AuthenticationService } from '../auth/authentication.service'; // Aseg�
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  constructor(
+    private authService: AuthenticationService,
+     private router: Router,
+     private storage: Storage) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
+  async canActivate(
+    next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.isLoggedIn()) {
-      return true; // Si está autenticado, permite el acceso
+  ): Promise<boolean | UrlTree> {
+    const isAuthenticated = true;
+
+    if (await this.storage.get('isLoggedIn')) {
+      return true;
     } else {
-      this.router.navigate(['/login']); // Si no está autenticado, redirige a la página de login
-      return false; // Bloquea el acceso a la ruta protegida
+      this.router.navigate(['/login']);
+      return false;
     }
   }
 }
