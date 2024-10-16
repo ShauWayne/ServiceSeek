@@ -49,6 +49,8 @@ export class LoginPage implements OnInit{
     }
   }
 
+  
+
   async openRegisterModal() {
     const modal = await this.modalCtrl.create({
       component: RegisterModalComponent,

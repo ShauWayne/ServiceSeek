@@ -52,38 +52,38 @@ export class AddResenaPage implements OnInit {
         }
       },
       complete: async () => {//Si se obtuvieron valores..
-      const nombreUsuario = await this.auth.getUsuario();
-      const nuevaResena: ClResena = {//Se ingresan al objeto nueva reseña
-        id: String(this.maxId + 1),//Crea el id sumando 1 a la id más alta
-        id_servicio: this.servicioId,//Obtiene el valor desde el servicio actual
-        usuario: nombreUsuario,//Obtiene el nombre del usuario desde el auth
-        calificacion: this.formResena.value.fCalificacion,
-        comentario: this.formResena.value.fComentario,
-        fecha: new Date().toLocaleDateString('es-CL'),//Obtiene fecha desde sistema
-      };
-    await this.apiRestService.addResena(nuevaResena)//Agrega reseña desde el objeto antes creado
-    .subscribe({//suscribe los datos de la consulta
-      next: (data) => {//los guarda en data
-        console.log('Data: ',data);
-        loading.dismiss();//Cierra ventana de carga
-        if (data == null){//Si la respuesta es null el agregar objeto falló
-          console.log('No se añadieron datos, data = null');
-          return
-        }
-        console.log('Se añaden datos, router: ',this.router);
-        this.router.navigate(['/servicio-resenas', this.servicioId]);//Redirige al listado de servicios
+        const nombreUsuario = await this.auth.getUsuario();
+        const nuevaResena: ClResena = {//Se ingresan al objeto nueva reseña
+          id: String(this.maxId + 1),//Crea el id sumando 1 a la id más alta
+          id_servicio: this.servicioId,//Obtiene el valor desde el servicio actual
+          usuario: nombreUsuario,//Obtiene el nombre del usuario desde el auth
+          calificacion: this.formResena.value.fCalificacion,
+          comentario: this.formResena.value.fComentario,
+          fecha: new Date().toLocaleDateString('es-CL'),//Obtiene fecha desde sistema
+        };
+        await this.apiRestService.addResena(nuevaResena)//Agrega reseña desde el objeto antes creado
+        .subscribe({//suscribe los datos de la consulta
+          next: (data) => {//los guarda en data
+            console.log('Data: ',data);
+            loading.dismiss();//Cierra ventana de carga
+            if (data == null){//Si la respuesta es null el agregar objeto falló
+              console.log('No se añadieron datos, data = null');
+              return
+            }
+            console.log('Se añaden datos, router: ',this.router);
+            this.router.navigate(['/servicio-resenas', this.servicioId]);//Redirige al listado de servicios
+          },
+          error: (error) => {//En caso de error muestra en pantalla
+            console.error('Error al agregar la resena:', error);
+            loading.dismiss();
+          }
+        });
       },
-      error: (error) => {//En caso de error muestra en pantalla
-        console.error('Error al agregar la resena:', error);
+      error: (error) => {//En caso de no poder obtener los valores de reseña indica error 
+        console.error('Error al obtener reseñas para el cálculo de ID:', error);
         loading.dismiss();
       }
     });
-  },
-  error: (error) => {//En caso de no poder obtener los valores de reseña indica error 
-    console.error('Error al obtener reseñas para el cálculo de ID:', error);
-    loading.dismiss();
-  }
-});
   }
     
 

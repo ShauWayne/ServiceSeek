@@ -6,14 +6,6 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 declare var google: any;
 
-interface Marker {
-  position: {
-    lat: number;
-    lng: number;
-  };
-  title: string;
-}
-
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.page.html',

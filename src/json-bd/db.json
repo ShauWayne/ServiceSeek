@@ -613,6 +613,14 @@
       "calificacion": 3,
       "comentario": "Buen precio y buen servicio.",
       "fecha": "09-10-2024"
+    },
+    {
+      "id": "41",
+      "id_servicio": 4,
+      "usuario": "Leandro Martinez",
+      "calificacion": 2,
+      "comentario": "Estaba pasado a raja.",
+      "fecha": "16-10-2024"
     }
   ],
   "usuarios": [
@@ -671,6 +679,30 @@
       "contrasena": "Elmora2024,.-",
       "foto_perfil": "url_to_profile_photo_6",
       "fecha_registro": "2024-10-01"
+    },
+    {
+      "id": "8",
+      "nombre": "Lisa Simpson",
+      "correo": "lsimp@gmail.com",
+      "contrasena": "Abcd1234,.-",
+      "foto_perfil": "url_to_profile_photo_8",
+      "fecha_registro": "16-10-2024"
+    },
+    {
+      "id": "9",
+      "nombre": "Miguel Astete",
+      "correo": "maste@duoc.cl",
+      "contrasena": "Mastete1234,.-",
+      "foto_perfil": "url_to_profile_photo_9",
+      "fecha_registro": "16-10-2024"
+    },
+    {
+      "id": "10",
+      "nombre": "Leandro Martinez",
+      "correo": "opcion3@rojo.cl",
+      "contrasena": "Leandro2022,.-",
+      "foto_perfil": "url_to_profile_photo_10",
+      "fecha_registro": "16-10-2024"
     }
   ],
   "categorias": [

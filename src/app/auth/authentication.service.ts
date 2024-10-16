@@ -9,9 +9,6 @@ import { AlertController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  
-  private isAuthenticated: boolean = false; // Inicializa flag
-  private usuarioActual: string = "Invitado";//Por defecto es invitado
 
   constructor( private storage: Storage, private apiRestService: ApiRestService, private alertController : AlertController) {
     this.ngOnInit();

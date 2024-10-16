@@ -6,7 +6,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { ClUsuario } from '../menu/crud/usuarios/model/ClUsuario';
 
-const apiUrl = 'http://192.168.56.1:3000'; // URL json-server
+const apiUrl = 'http://localhost:3000'; // URL json-server
 const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }; // Cabecera que especifica el tipo de contenido, en este caso Json
 
 @Injectable({
@@ -164,4 +164,33 @@ export class ApiRestService {
     );
   }
 
+  // Agregar Reseña
+  addUsuario(usuario: ClUsuario): Observable<ClUsuario> {
+    console.log('Agregando usuario', usuario, '...'); //Da detalles en consola
+    return this.http.post<ClUsuario>(apiUrl + "/usuarios", usuario, httpOptions)
+    .pipe(
+      tap((usuario: ClUsuario) => console.log('Usuario agregado', usuario)), //Confirma en consola
+      catchError(this.handleError<ClUsuario>('addUsuario', usuario))
+    );
+  }
+
+  // Actualizar un usuario
+  updUsuario(id: number, usuario: ClUsuario): Observable<ClUsuario> {
+    console.log('Actualizando usuario Id: ', id, '...');
+    return this.http.put<ClUsuario>(apiUrl + "/usuarios" + "/" + id, usuario, httpOptions)
+    .pipe(
+      tap(_ => console.log(`Usuario actualizado id=${id}`)),
+      catchError(this.handleError<any>('updateUsuario'))
+    );
+  }
+
+  // Borrar un usuario
+  delUsuario(id: string): Observable<ClUsuario> {
+    console.log('Eliminando usuario Id: ', id, '...');
+    return this.http.delete<ClUsuario>(apiUrl + "/usuarios" + "/" + id, httpOptions)
+    .pipe(
+      tap(_ => console.log(`Usuario eliminado id=${id}`)),
+      catchError(this.handleError<ClUsuario>('getUsuario'))
+    );
+  }
 }

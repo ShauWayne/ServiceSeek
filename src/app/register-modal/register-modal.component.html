@@ -47,6 +47,17 @@
       <p>La fecha de nacimiento es requerida</p>
     </div>
 
+    <ion-item class="item-spacing">
+      <ion-label>Contraseña:</ion-label>
+      <ion-input type="password" formControlName="contrasena"></ion-input>
+    </ion-item>
+    <div *ngIf="formularioRegistro.get('contrasena')?.invalid && formularioRegistro?.get('contrasena')?.touched">
+      <ion-text color="danger">
+        <p *ngIf="formularioRegistro.get('contrasena')?.errors?.['required']">La contraseña es requerida.</p>
+        <p *ngIf="formularioRegistro.get('contrasena')?.errors?.['pattern']">Contraseña no cumple con los parámetros de seguridad (12 de longitud, 1 Mayúscula, 4 caracteres numéricos, 3 caracteres especiales).</p>
+      </ion-text>
+    </div>
+
     <ion-button expand="full" type="submit" [disabled]="formularioRegistro.invalid">Registrarse</ion-button>
   </form>
 </ion-content>
