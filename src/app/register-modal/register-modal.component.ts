@@ -4,7 +4,7 @@ import { DatePickerModalComponent } from '../date-picker-modal/date-picker-modal
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiRestService } from '../services/api-rest.service';
 import { ClUsuario } from '../menu/crud/usuarios/model/ClUsuario';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-modal',
@@ -22,7 +22,6 @@ export class RegisterModalComponent implements OnInit {
     private loadingController: LoadingController,
     private apiRestService: ApiRestService,
     private router: Router,
-    private route: ActivatedRoute,
     private alertController: AlertController
   ) {
     // Inicializar el formulario con validaciones
@@ -49,8 +48,6 @@ export class RegisterModalComponent implements OnInit {
       await this.apiRestService.getUsuarios().subscribe({//Obtiene los valores de id para saber el valor que tendrá la id de la nueva reseña
         next: (usuarios) => {//Las ingresa en variable usuarios
           if (usuarios && usuarios.length > 0) {//Busca que al menos haya 1 usuario
-            this.maxId = Math.max(...usuarios.map(r => Number(r.id))); // Obtener el ID máximo actual
-            console.log("AQUI ESTA R!!!!",this.maxId)
           }
         },
         complete: async () => {//Si se obtuvieron valores..
@@ -71,15 +68,15 @@ export class RegisterModalComponent implements OnInit {
                 console.log('No se añadieron datos, data = null');
                 return
               }else{
-                const alerta  = await this.alertController.create({
+                const alerta  = await this.alertController.create({ //Ventanita de confirmación
                   header: 'Información',
                   message: 'Usuario creado con éxito',
                   buttons: ['OK'],
                 });
-                await alerta.present();
+                await alerta.present();//Se muestra la ventana
                 console.log('Se añaden datos, router: ',this.router);
-                await alerta.onDidDismiss();
-                window.location.reload();
+                await alerta.onDidDismiss();//La página se recarga cuando el usuario cierra la ventanita
+                window.location.reload(); //Se actualiza la page
 
               }
             },
