@@ -1,7 +1,5 @@
 // src/app/services/database.service.ts
 
-// src/app/services/database.service.ts
-
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError, interval } from 'rxjs';
 import { Platform } from '@ionic/angular';

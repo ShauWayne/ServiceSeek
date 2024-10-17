@@ -18,19 +18,20 @@ export class AuthService {
   }
 
   // Guardar los datos del usuario
-  async saveSession(user: any) {
-    await this._storage?.set('user', user); // Guardar los datos del usuario bajo la clave 'user' en el almacenamiento
-  }
+async saveSession(username: any) {
+  await this._storage?.set('username', username); // Guardar los datos del usuario bajo la clave 'username' en el almacenamiento
+}
 
-  // Obtener los datos del usuario
-  async getSession() {
-    return await this._storage?.get('user'); // Obtener los datos del usuario almacenados bajo la clave 'user'
-  }
+// Obtener los datos del usuario
+async getSession() {
+  return await this._storage?.get('username'); // Obtener los datos del usuario almacenados bajo la clave 'username'
+}
 
-  // Eliminar los datos del usuario para cerrar sesión
-  async clearSession() {
-    await this._storage?.remove('user'); // Eliminar los datos del usuario almacenados bajo la clave 'user'
-  }
+// Eliminar los datos del usuario para cerrar sesión
+async clearSession() {
+  await this._storage?.remove('username'); // Eliminar los datos del usuario almacenados bajo la clave 'username'
+}
+
 
   // Verificar si hay un usuario registrado (inicio automático de sesión)
   async isLoggedIn(): Promise<boolean> {
