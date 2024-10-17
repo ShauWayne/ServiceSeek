@@ -711,6 +711,14 @@
       "contrasena": "Abcd1234,.-",
       "foto_perfil": "url_to_profile_photo_1",
       "fecha_registro": "16-10-2024"
+    },
+    {
+      "id": "1",
+      "nombre": "Alex Wayne",
+      "correo": "machi@gmail.com",
+      "contrasena": "Alexwayne2010&%$",
+      "foto_perfil": "url_to_profile_photo_1",
+      "fecha_registro": "16-10-2024"
     }
   ],
   "categorias": [
