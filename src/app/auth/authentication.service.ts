@@ -4,13 +4,15 @@ import { ApiRestService } from '../services/api-rest.service';
 import { ClUsuario } from '../menu/crud/usuarios/model/ClUsuario';
 import { lastValueFrom } from 'rxjs';
 import { AlertController } from '@ionic/angular';
+import { DatabaseService } from '../services/database.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor( private storage: Storage, private apiRestService: ApiRestService, private alertController : AlertController) {
+  constructor( private storage: Storage, private apiRestService: ApiRestService, private alertController : AlertController, private sqlService: DatabaseService, private router: Router) {
     this.ngOnInit();
   }
 
@@ -61,7 +63,10 @@ export class AuthenticationService {
 
   // Método para cerrar sesión
   async logout(): Promise<void> {
+    await this.sqlService.sincronizarResenas();//Sincroniza datos desde el SQL a JSON
+    await this.sqlService.sincronizarUsuarios();//Lo Mismo, pero con los usuarios añadidos
     await this.storage.remove('isLoggedIn');
+    this.router.navigate(['/login']);
   }
 
   async getUsuario(): Promise<string> {

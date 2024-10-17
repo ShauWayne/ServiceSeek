@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiRestService } from '../services/api-rest.service';
 import { ClUsuario } from '../menu/crud/usuarios/model/ClUsuario';
 import { Router } from '@angular/router';
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-register-modal',
@@ -22,7 +23,8 @@ export class RegisterModalComponent implements OnInit {
     private loadingController: LoadingController,
     private apiRestService: ApiRestService,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private SqlLiteService: DatabaseService,
   ) {
     // Inicializar el formulario con validaciones
     this.formularioRegistro = this.fb.group({
@@ -73,6 +75,8 @@ export class RegisterModalComponent implements OnInit {
                   message: 'Usuario creado con éxito',
                   buttons: ['OK'],
                 });
+                this.SqlLiteService.addUsuario(nuevoUsuario); // Se envían datos a SQL
+                this.SqlLiteService.sincronizarUsuarios(); // Se aplica persistencia para confirmar subida de datos.
                 await alerta.present();//Se muestra la ventana
                 console.log('Se añaden datos, router: ',this.router);
                 await alerta.onDidDismiss();//La página se recarga cuando el usuario cierra la ventanita

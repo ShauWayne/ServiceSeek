@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { ApiRestService } from '../../../../services/api-rest.service';
 import { ClResena } from '../../resena/model/ClResena';
 import { FormControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-add-resena',
@@ -20,7 +21,7 @@ export class AddResenaPage implements OnInit {
   maxId = 0;//Variable para obtener ID de reseña más alto
 
   constructor(
-    //public SqlLiteService: DatabaseService,
+    public SqlLiteService: DatabaseService,
     private formBuilder: FormBuilder,
     public apiRestService: ApiRestService,//Instancia el ApiRest de JSON
     public loadingController: LoadingController,
@@ -70,6 +71,8 @@ export class AddResenaPage implements OnInit {
               console.log('No se añadieron datos, data = null');
               return
             }
+            this.SqlLiteService.addResena(nuevaResena); // Se envían datos a SQL
+            this.SqlLiteService.sincronizarResenas(); // Se aplica persistencia para confirmar subida de datos.
             console.log('Se añaden datos, router: ',this.router);
             this.router.navigate(['/servicio-resenas', this.servicioId]);//Redirige al listado de servicios
           },

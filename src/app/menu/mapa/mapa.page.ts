@@ -68,6 +68,6 @@ export class MapaPage implements OnInit, OnDestroy{
   logout() {
     console.log('Cerrar sesión');
     this.auth.logout();
-    this.router.navigate(['/login']);
+    
   }
 }

@@ -621,6 +621,22 @@
       "calificacion": 2,
       "comentario": "Estaba pasado a raja.",
       "fecha": "16-10-2024"
+    },
+    {
+      "id": "42",
+      "id_servicio": 2,
+      "usuario": "Shauna Wayne",
+      "calificacion": 4,
+      "comentario": "Muy pequeño, pero bien equipado.",
+      "fecha": "17-10-2024"
+    },
+    {
+      "id": "43",
+      "id_servicio": 3,
+      "usuario": "Matias Morales",
+      "calificacion": 3,
+      "comentario": "cc",
+      "fecha": "17-10-2024"
     }
   ],
   "usuarios": [

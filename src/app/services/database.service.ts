@@ -1,59 +1,36 @@
 // src/app/services/database.service.ts
 
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError, interval } from 'rxjs';
-import { Platform } from '@ionic/angular';
+import { Observable, of, throwError, interval, lastValueFrom } from 'rxjs';
 import { ApiRestService } from './api-rest.service'; // Importar ApiRestService
-import { firstValueFrom } from 'rxjs'; // Para manejar Observables como Promesas
 import { SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { switchMap } from 'rxjs/operators';
+import { ClServicio } from '../menu/crud/servicios/model/ClServicio';
+import { ClResena } from '../menu/crud/resena/model/ClResena';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ClUsuario } from '../menu/crud/usuarios/model/ClUsuario';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DatabaseService {
-  private db!: SQLiteObject;
-  private dbInstance!: SQLiteObject;
-
+  private dbInstance!: SQLiteObject // Inyectar SQLiteObject
+  
   constructor(
-    private sqlite: SQLite, 
-    private platform: Platform, 
     private apiRestService: ApiRestService // Inyectar ApiRestService
   ) {
-    this.crearDB();
     this.startBackgroundSync(); // Iniciar la sincronización en segundo plano
   }
 
-  // Obtener todos los servicios de la base de datos local
-  async getServicios(): Promise<any[]> {
-    try {
-      const query = 'SELECT * FROM servicios';
-      const result = await this.db.executeSql(query, []);
-      const servicios = [];
-      for (let i = 0; i < result.rows.length; i++) {
-        servicios.push(result.rows.item(i));
-      }
-      return servicios;
-    } catch (error) {
-      console.error('Error al obtener los servicios:', error);
-      throw error; // Lanza el error para manejarlo en otro lugar
+  setDb(db: SQLiteObject) {
+    if (this.dbInstance === null) {
+      this.dbInstance = db;
     }
   }
 
-  // Crear la base de datos y cargar los datos del API REST
-  async crearDB() {
-    await this.platform.ready(); // Esperar a que la plataforma esté lista
-    this.dbInstance = await this.sqlite.create({
-      name: 'serviceseekpersistencia.db', // Nombre de la base de datos
-      location: 'default', // Ubicación de la base de datos
-    });
-    await this.createTables(); // Crear las tablas si no existen
-    await this.insertDataFromAPI(); // Insertar los datos obtenidos desde el API REST a SQLite
-  }
+  createTables(): Promise<any> {
 
-  // Crear las tablas en SQLite si no existen
-  private async createTables() {
     const sql = `
       CREATE TABLE IF NOT EXISTS servicios (
         id INTEGER PRIMARY KEY,
@@ -90,26 +67,12 @@ export class DatabaseService {
         descripcion TEXT
       );
     `;
-    await this.dbInstance.executeSql(sql, []); // Ejecutar la consulta SQL para crear las tablas
+    return this.dbInstance.executeSql(sql); // Ejecutar la consulta SQL para crear las tablas
   }
 
-  // Obtener los datos del API REST e insertarlos en SQLite
-  private async insertDataFromAPI() {
-    try {
-      // Obtener los datos de la API REST usando el ApiRestService
-      const servicios = await firstValueFrom(this.apiRestService.getServicios());
-
-      // Insertar los servicios en SQLite
-      await this.insertServicios(servicios);
-
-      console.log('Datos insertados correctamente en la base de datos SQLite.');
-    } catch (error) {
-      console.error('Error al cargar datos desde la API REST:', error);
-    }
-  }
 
   // Insertar servicios en la tabla `servicios`
-  private async insertServicios(servicios: any[]) {
+  private async insertServicios(servicios: ClServicio[]) {
     const sql = `
       INSERT OR IGNORE INTO servicios 
       (id, nombre, tipo, lat, lng, direccion, descripcion, telefono, horario, calificacion, num_resenas) 
@@ -120,8 +83,7 @@ export class DatabaseService {
         servicio.id,
         servicio.nombre,
         servicio.tipo,
-        servicio.ubicacion.lat,
-        servicio.ubicacion.lng,
+        servicio.ubicacion,
         servicio.direccion,
         servicio.descripcion,
         servicio.telefono,
@@ -157,21 +119,92 @@ export class DatabaseService {
   // Agregar métodos adicionales para manejar otras tablas como `resenas`, `usuarios` y `categorias`
   // según se vayan requiriendo en el proyecto.
 
-  // Ejemplo de agregar un nuevo producto (similar a los servicios)
-  async addProduct(name: string, price: number) {
-    const sql = 'INSERT INTO productos (name, price) VALUES (?, ?)';
-    return this.dbInstance.executeSql(sql, [name, price]); // Insertar un nuevo producto en la tabla `productos`
+  // Ejemplo de agregar una nueva reseña (similar a los servicios)
+  async addResena(resena: ClResena) {
+    const sql = 'INSERT INTO resenas (id, id_servicio, usuario, calificacion, comentario, fecha) VALUES (?, ?, ?, ?, ?)';
+    return this.dbInstance.executeSql(sql, [resena.id,resena.id_servicio, resena.usuario, resena. calificacion, resena.comentario, resena.fecha]);
   }
 
-  // Consultar todos los productos de la tabla `productos`
-  async getProducts() {
-    const sql = 'SELECT * FROM productos';
-    const result = await this.dbInstance.executeSql(sql, []); // Ejecutar la consulta SQL para obtener los productos
-    const products = [];
+  async getResenas() {
+    const sql = 'SELECT * FROM resenas';
+    const result = await this.dbInstance.executeSql(sql, []);
+    const resenas = [];
     for (let i = 0; i < result.rows.length; i++) {
-      products.push(result.rows.item(i)); // Añadir cada producto al array de productos
+      resenas.push(result.rows.item(i));
     }
-    return products; // Devolver el array de productos
+    return resenas;
   }
   
+  async sincronizarResenas(): Promise<void> {
+    const sql = 'SELECT * FROM resenas';
+    const result = await this.dbInstance.executeSql(sql, []);
+    
+    for (let i = 0; i < result.rows.length; i++) {
+      const resena = result.rows.item(i);
+  
+      try {
+        // Verificar si la reseña existe en el API REST
+        const apiResena = await lastValueFrom(this.apiRestService.getResena(resena.id));
+  
+        if (apiResena) {
+          // Si existe en el API REST, eliminarla de la base de datos local
+          await this.dbInstance.executeSql('DELETE FROM resenas WHERE id = ?', [resena.id]);
+          console.log(`Reseña con id ${resena.id} eliminada del almacenamiento local`);
+        }
+      } catch (error: unknown) {
+        if (error instanceof HttpErrorResponse && error.status === 404) {
+          await lastValueFrom(this.apiRestService.addResena(resena));
+          console.log(`Reseña con id ${resena.id} añadida al servidor`);
+          // Eliminarla de la base de datos local después de insertarla en el servidor
+          await this.dbInstance.executeSql('DELETE FROM resenas WHERE id = ?', [resena.id]);
+        } else {
+          console.error(`Error al sincronizar la reseña con id ${resena.id}:`, error);
+        }
+      }
+    }
+  }
+
+  async addUsuario(usuario: ClUsuario) {
+    const sql = 'INSERT INTO usuarios (id, nombre, correo, contrasena, foto_perfil, fecha_registro) VALUES (?, ?, ?, ?, ?, ?)';
+    return this.dbInstance.executeSql(sql, [usuario.id, usuario.nombre, usuario.correo, usuario.contrasena, usuario.foto_perfil, usuario.fecha_registro]);
+  }
+
+  async getUsuarios() {
+    const sql = 'SELECT * FROM usuarios';
+    const result = await this.dbInstance.executeSql(sql, []);
+    const usuarios = [];
+    for (let i = 0; i < result.rows.length; i++) {
+      usuarios.push(result.rows.item(i));
+    }
+    return usuarios;
+  }
+  
+  async sincronizarUsuarios(): Promise<void> {
+    const sql = 'SELECT * FROM usuarios';
+    const result = await this.dbInstance.executeSql(sql, []);
+    
+    for (let i = 0; i < result.rows.length; i++) {
+      const usuario = result.rows.item(i);
+  
+      try {
+        // Verificar si el usuario existe en el API REST
+        const apiUsuario = await lastValueFrom(this.apiRestService.getUsuario(usuario.id));
+  
+        if (apiUsuario) {
+          // Si existe en el API REST, eliminarla de la base de datos local
+          await this.dbInstance.executeSql('DELETE FROM usuarios WHERE id = ?', [usuario.id]);
+          console.log(`Usuario con id ${usuario.id} eliminado del almacenamiento local`);
+        }
+      } catch (error: unknown) {
+        if (error instanceof HttpErrorResponse && error.status === 404) {
+          await lastValueFrom(this.apiRestService.addUsuario(usuario));
+          console.log(`Usuario con id ${usuario.id} añadido al servidor`);
+          // Eliminarla de la base de datos local después de insertarla en el servidor
+          await this.dbInstance.executeSql('DELETE FROM usuarios WHERE id = ?', [usuario.id]);
+        } else {
+          console.error(`Error al sincronizar el usuario con id ${usuario.id}:`, error);
+        }
+      }
+    }
+  }
 }
