@@ -63,7 +63,7 @@ export class ServicioResenasPage implements OnInit {
     await loading.present(); //Muestra ventana de carga en pantalla
     console.log('Ingresando a ApiRest');
     const servicioId = parseInt(this.route.snapshot.paramMap.get('id')!);//Pasamos el valor a number
-    await this.apiRestService.getResenasServicio(servicioId) //Obitene todas las reseñas con el id del servicio desde api-rest.service.ts
+    await this.apiRestService.getResenasServicio(servicioId) //Obtiene todas las reseñas con el id del servicio desde api-rest.service.ts
     .subscribe({//Suscribe los datos
       next: (data) => {//Los inresa en data
         console.log('Data: ',data);
