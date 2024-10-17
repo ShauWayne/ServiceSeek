@@ -14,18 +14,8 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
 
-<<<<<<< HEAD
   constructor( private storage: Storage, private apiRestService: ApiRestService, private alertController : AlertController, private sqlService: DatabaseService, private router: Router) {
     this.ngOnInit();
-=======
-  // Constructor del servicio con inyección de dependencias
-  constructor(
-    private storage: Storage, // Servicio de almacenamiento para manejar persistencia de datos localmente
-    private apiRestService: ApiRestService, // Servicio para realizar solicitudes a la API REST
-    private alertController: AlertController // Controlador de alertas para mostrar mensajes al usuario
-  ) {
-    this.ngOnInit(); // Llama al método de inicialización
->>>>>>> c51ba1f1df693e892695b61861a8b59996b324df
   }
 
   // Método de inicialización para crear el almacenamiento
@@ -87,12 +77,8 @@ export class AuthenticationService {
 
   // Método para cerrar sesión
   async logout(): Promise<void> {
-<<<<<<< HEAD
     await this.sqlService.sincronizarResenas();//Sincroniza datos desde el SQL a JSON
     await this.sqlService.sincronizarUsuarios();//Lo Mismo, pero con los usuarios añadidos
-=======
-    // Elimina el valor de 'isLoggedIn' del almacenamiento para cerrar la sesión
->>>>>>> c51ba1f1df693e892695b61861a8b59996b324df
     await this.storage.remove('isLoggedIn');
     this.router.navigate(['/login']);
   }
