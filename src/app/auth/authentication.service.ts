@@ -1,3 +1,4 @@
+// Importaciones necesarias de Angular, Ionic y otros servicios utilizados
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { ApiRestService } from '../services/api-rest.service';
@@ -7,70 +8,99 @@ import { AlertController } from '@ionic/angular';
 import { DatabaseService } from '../services/database.service';
 import { Router } from '@angular/router';
 
+// Decorador Injectable para permitir que el servicio sea inyectado en otros componentes o servicios
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Define el ámbito del servicio como 'root', lo que hace que esté disponible en toda la aplicación
 })
 export class AuthenticationService {
 
+<<<<<<< HEAD
   constructor( private storage: Storage, private apiRestService: ApiRestService, private alertController : AlertController, private sqlService: DatabaseService, private router: Router) {
     this.ngOnInit();
+=======
+  // Constructor del servicio con inyección de dependencias
+  constructor(
+    private storage: Storage, // Servicio de almacenamiento para manejar persistencia de datos localmente
+    private apiRestService: ApiRestService, // Servicio para realizar solicitudes a la API REST
+    private alertController: AlertController // Controlador de alertas para mostrar mensajes al usuario
+  ) {
+    this.ngOnInit(); // Llama al método de inicialización
+>>>>>>> c51ba1f1df693e892695b61861a8b59996b324df
   }
 
-  async ngOnInit(){
-      await this.storage.create();
+  // Método de inicialización para crear el almacenamiento
+  async ngOnInit() {
+    await this.storage.create(); // Inicializa la base de datos de almacenamiento local
   }
 
   // Método para iniciar sesión
   async login(correoUser: string, password: string): Promise<boolean> {
     try {
+      // Obtiene el usuario correspondiente al correo proporcionado mediante una llamada a la API
       const users: ClUsuario[] = await lastValueFrom(this.apiRestService.getUsuario(correoUser));
-      
-      if(users.length > 0){
-        const userClass = users[0];
+
+      // Verifica si se encontraron usuarios con el correo proporcionado
+      if (users.length > 0) {
+        const userClass = users[0]; // Se asume que solo hay un usuario con ese correo
         console.log(userClass);
-        console.log('Auth Usuario:',userClass.nombre,'-',userClass.contrasena);
-        if (correoUser === userClass.correo && password === userClass.contrasena){
+        console.log('Auth Usuario:', userClass.nombre, '-', userClass.contrasena);
+        
+        // Verifica si el correo y la contraseña proporcionados son correctos
+        if (correoUser === userClass.correo && password === userClass.contrasena) {
+          // Guarda en el almacenamiento local que el usuario está autenticado y su nombre
           await this.storage.set('isLoggedIn', true);
           await this.storage.set('user', userClass.nombre);
-          return true;
+          return true; // Retorna 'true' indicando que el inicio de sesión fue exitoso
         } else {
-          const alerta  = await this.alertController.create({
+          // Muestra una alerta indicando que la contraseña es incorrecta
+          const alerta = await this.alertController.create({
             header: 'Error',
             message: 'Contraseña incorrecta',
             buttons: ['OK']
           });
           await alerta.present();
           console.log('Contraseña incorrecta');
-          return false;
+          return false; // Retorna 'false' indicando que el inicio de sesión falló
         }
-      }else{
-        const alerta  = await this.alertController.create({
+      } else {
+        // Muestra una alerta indicando que no se encontró al usuario
+        const alerta = await this.alertController.create({
           header: 'Error',
           message: 'Usuario no encontrado',
           buttons: ['OK']
         });
         await alerta.present();
       }
-      return false; // Add this line to handle the case when userData is falsy
-    } catch (error){
+      return false; // Retorna 'false' si no se encontró ningún usuario con el correo proporcionado
+    } catch (error) {
+      // Manejo de errores durante el proceso de autenticación
       console.error('Error en autenticación: ', error);
-      return false;
+      return false; // Retorna 'false' en caso de error
     }
-  }  // Método para saber si el usuario está autenticado
+  }
+
+  // Método para verificar si el usuario está autenticado
   async isLoggedIn(): Promise<boolean> {
-    return !!(await this.storage.get('isLoggedIn')) // Retorna el estado de autenticación (true-false)
+    // Devuelve el valor almacenado bajo 'isLoggedIn' que indica si el usuario está autenticado (true/false)
+    return !!(await this.storage.get('isLoggedIn'));
   }
 
   // Método para cerrar sesión
   async logout(): Promise<void> {
+<<<<<<< HEAD
     await this.sqlService.sincronizarResenas();//Sincroniza datos desde el SQL a JSON
     await this.sqlService.sincronizarUsuarios();//Lo Mismo, pero con los usuarios añadidos
+=======
+    // Elimina el valor de 'isLoggedIn' del almacenamiento para cerrar la sesión
+>>>>>>> c51ba1f1df693e892695b61861a8b59996b324df
     await this.storage.remove('isLoggedIn');
     this.router.navigate(['/login']);
   }
 
+  // Método para obtener el nombre del usuario autenticado
   async getUsuario(): Promise<string> {
     const user = await this.storage.get('user');
-    return user ? String(user): 'Invitado';
+    // Si el usuario está definido, lo devuelve; de lo contrario, devuelve 'Invitado'
+    return user ? String(user) : 'Invitado';
   }
 }
