@@ -77,8 +77,6 @@ export class AuthenticationService {
 
   // Método para cerrar sesión
   async logout(): Promise<void> {
-    await this.sqlService.sincronizarResenas();//Sincroniza datos desde el SQL a JSON
-    await this.sqlService.sincronizarUsuarios();//Lo Mismo, pero con los usuarios añadidos
     await this.storage.remove('isLoggedIn');
     this.router.navigate(['/login']);
   }

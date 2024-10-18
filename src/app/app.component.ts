@@ -25,11 +25,6 @@ export class AppComponent {
   async initializeApp() {
     await this.platform.ready(); // Esperar a que la plataforma esté lista (esto asegura que todo esté inicializado correctamente)
     const isLoggedIn = await this.authService.isLoggedIn(); // Verificar si el usuario ya ha iniciado sesión
-
-    // Solo redirigir si el usuario está en la página de inicio de sesión
-    if (isLoggedIn && this.router.url === '/login') {
-      this.router.navigateByUrl('/home'); // Si el usuario está autenticado y está en la página de login, redirigir a la página principal
-    }
   }
 
   // Método para cerrar sesión
