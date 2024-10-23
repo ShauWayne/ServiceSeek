@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { ClUsuario } from '../menu/crud/usuarios/model/ClUsuario'; // Modelo para los usuarios
 
 // URL base para las llamadas a la API del json-server
-const apiUrl = 'http://10.155.84.152:3000'; 
+const apiUrl = 'http://serviceseek.ddns.net:3100'; 
 // Opciones para la cabecera HTTP (tipo de contenido JSON)
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
