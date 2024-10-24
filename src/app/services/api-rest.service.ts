@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { ClUsuario } from '../menu/crud/usuarios/model/ClUsuario'; // Modelo para los usuarios
 
 // URL base para las llamadas a la API del json-server
-const apiUrl = 'http://10.155.84.152:3000'; 
+const apiUrl = 'https://6719b62e7fc4c5ff8f4e348f.mockapi.io/'; 
 // Opciones para la cabecera HTTP (tipo de contenido JSON)
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
@@ -101,6 +101,7 @@ export class ApiRestService {
     console.log("Obteniendo reseñas para el servicio ID:", idServicio);
     return this.http.get<ClResena[]>(`${apiUrl}/resenas?id_servicio=${idServicio}`)
       .pipe(
+        map(resenas => resenas.filter(resena => resena.id_servicio === idServicio)),//Filtra resutados por idServicio
         tap(resenas => console.log('Reseñas obtenidas:', resenas)), // Loguea que se obtuvieron reseñas para un servicio específico
         catchError(this.handleError('getResenasServicio', [])) // Maneja errores
       );
