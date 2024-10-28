@@ -43,7 +43,8 @@ export class DatabaseService {
         telefono TEXT,
         horario TEXT,
         calificacion REAL,
-        num_resenas INTEGER
+        num_resenas INTEGER,
+        foto TEXT
       );
       CREATE TABLE IF NOT EXISTS resenas (
         id INTEGER PRIMARY KEY,

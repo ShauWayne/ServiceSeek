@@ -49,7 +49,6 @@ export class AddResenaPage implements OnInit {
       next: (resenas) => {//Las ingresa en variable resenas
         if (resenas && resenas.length > 0) {//Busca que al menos haya 1 reseña
           this.maxId = Math.max(...resenas.map(r => Number(r.id))); // Obtener el ID máximo actual
-          console.log("AQUI ESTA R!!!!",this.maxId)
         }
       },
       complete: async () => {//Si se obtuvieron valores..
@@ -62,6 +61,7 @@ export class AddResenaPage implements OnInit {
           comentario: this.formResena.value.fComentario,
           fecha: new Date().toLocaleDateString('es-CL'),//Obtiene fecha desde sistema
         };
+        this.SqlLiteService.addResena(nuevaResena); // Se envían datos a SQL
         await this.apiRestService.addResena(nuevaResena)//Agrega reseña desde el objeto antes creado
         .subscribe({//suscribe los datos de la consulta
           next: (data) => {//los guarda en data
@@ -71,8 +71,6 @@ export class AddResenaPage implements OnInit {
               console.log('No se añadieron datos, data = null');
               return
             }
-            this.SqlLiteService.addResena(nuevaResena); // Se envían datos a SQL
-            this.SqlLiteService.sincronizarResenas(); // Se aplica persistencia para confirmar subida de datos.
             console.log('Se añaden datos, router: ',this.router);
             this.router.navigate(['/servicio-resenas', this.servicioId]);//Redirige al listado de servicios
           },
@@ -87,6 +85,7 @@ export class AddResenaPage implements OnInit {
         loading.dismiss();
       }
     });
+    this.SqlLiteService.sincronizarResenas(); // Se aplica persistencia para confirmar subida de datos.
   }
     
 
