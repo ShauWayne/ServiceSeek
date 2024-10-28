@@ -9,6 +9,7 @@ export class ClServicio{
     horario: string;
     calificacion: number;
     num_resenas: number;
+    foto: String;
 
     constructor (obj: any){
         this.id = obj && obj.id || null
@@ -21,5 +22,6 @@ export class ClServicio{
         this.horario = obj && obj.horario || null
         this.calificacion = obj && obj.calificacion || null
         this.num_resenas = obj && obj.num_resenas || null
+        this.foto = obj && obj.foto || null
     }        
 }
