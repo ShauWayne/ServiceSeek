@@ -63,11 +63,30 @@ export class MapaPage implements OnInit, OnDestroy{
     window.location.reload();
   }
   
-
   // Implementación del método logout
   logout() {
     console.log('Cerrar sesión');
     this.auth.logout();
     
+  }
+  irAMapa() {
+    console.log('Cargando mapa... ');
+    this.router.navigate(['/mapa']);
+  }
+  profile() {
+    console.log('Cargando mapa... ');
+    this.router.navigate(['/profile']);
+  }
+  savedLocations() {
+    console.log('Cargando mapa... ');
+    this.router.navigate(['/favorites']);
+  }
+  settings() {
+    console.log('Cargando mapa... ');
+    this.router.navigate(['/settings']);
+  }
+  terminos() {
+    console.log('Cargando mapa... ');
+    this.router.navigate(['/terminos-y-condiciones']);
   }
 }

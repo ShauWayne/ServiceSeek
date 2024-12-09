@@ -3,11 +3,18 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 @Component({
-  selector: 'app-terminos-y-condiciones',
-  templateUrl: './terminos-y-condiciones.page.html',
-  styleUrls: ['./terminos-y-condiciones.page.scss'],
+  selector: 'app-profile',
+  templateUrl: './profile.page.html',
+  styleUrls: ['./profile.page.scss'],
 })
-export class TerminosYCondicionesPage implements OnInit {
+export class ProfilePage implements OnInit {
+
+  user = {
+    email: 'usuario@ejemplo.com',
+    phone: '+56 912345678',
+    address: 'Avenida Siempre Viva 123',
+    registrationDate: '2023-01-01',
+  };
 
   constructor(
     private router: Router,
@@ -16,6 +23,12 @@ export class TerminosYCondicionesPage implements OnInit {
 
   ngOnInit() {
   }
+
+  modifyUserData() {
+    console.log('Modificar datos de usuario');
+    // Aquí puedes abrir un modal o redirigir a otra página para editar los datos
+  }
+
   logout() {
     console.log('Cerrando sesión... ');
     this.auth.logout();

@@ -66,8 +66,13 @@ const routes: Routes = [
     path: 'servicio-resenas/:id',
     loadChildren: () => import('./menu/crud/servicios/servicio-resenas/servicio-resenas.module').then( m => m.ServicioResenasPageModule),
     canActivate: [AuthGuard]
+  },  
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
   { path: '**', redirectTo: '404' },
+
 
   
 

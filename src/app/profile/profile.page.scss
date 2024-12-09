@@ -29,6 +29,29 @@
   #bienvenido ion-content {
     --background: white; /* También aplicamos este estilo al ion-content dentro del modal */
 }
-  
+
+.user-profile {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-icon {
+  font-size: 100px;
+  color: var(--ion-color-primary);
+}
+
+.profile-list {
+  margin-top: 20px;
+  border: 1px dashed #000;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.btn-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
   
   

@@ -19,7 +19,7 @@
   <ion-content class="ion-padding" style="--background: white" fullscreen="true">
     <div id="map"></div>
     <ion-list lines="full">
-      <ion-item style="font-size: large; margin-bottom: 15px;" (click)="profile()">
+      <ion-item style="font-size: large; margin-bottom: 15px;">
         <ion-icon aria-hidden="false" slot="start" name="person-circle-outline" size="large"></ion-icon>
         <ion-label>Mi Perfil</ion-label>
         <ion-icon name="notifications-circle-outline" slot="end" size="large"></ion-icon>
@@ -71,5 +71,37 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class="ion-padding"></ion-content>
+  <ion-content class="ion-padding">
+    <!-- Icono de usuario -->
+    <div class="user-profile">
+      <ion-icon name="person-circle-outline" class="profile-icon"></ion-icon>
+      <h2>Nombre Usuario</h2>
+    </div>
+  
+    <!-- Lista de datos del usuario -->
+    <ion-list lines="full" class="profile-list">
+      <ion-item>
+        <ion-label>Correo</ion-label>
+        <ion-text>{{ user.email }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Teléfono</ion-label>
+        <ion-text>{{ user.phone }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dirección</ion-label>
+        <ion-text>{{ user.address }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha de Registro</ion-label>
+        <ion-text>{{ user.registrationDate }}</ion-text>
+      </ion-item>
+    </ion-list>
+  
+    <!-- Botón para modificar datos -->
+    <div class="btn-container">
+      <ion-button expand="block" color="primary" (click)="modifyUserData()">Modificar Datos</ion-button>
+    </div>
+  </ion-content>
+  
 </div>
