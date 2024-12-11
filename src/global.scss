@@ -91,3 +91,20 @@ ion-modal ion-toolbar {
   --background: rgb(14 116 144);
   --color: white;
 }
+
+:root {
+  --icon-color-light: black; /* Color en light mode */
+  --icon-color-dark: white; /* Color en dark mode */
+}
+
+body.light-mode {
+  --icon-color: var(--icon-color-light);
+}
+
+body.dark-mode {
+  --icon-color: var(--icon-color-dark);
+}
+
+.icon {
+  color: var(--icon-color);
+}
