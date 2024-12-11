@@ -38,12 +38,17 @@
 
 :root {
   --ion-background-color: #ffffff;
-  --ion-text-color: #000000;
+  --ion-text-color: #060606;
 }
 
 [data-theme="dark"] {
   --ion-background-color: #121212;
   --ion-text-color: #ffffff;
+}
+
+ion-toolbar ion-title {
+  color: #ffffff; /* Cambia este color al que desees */
+  font-weight: bold; /* Opcional: para destacar */
 }
 
 

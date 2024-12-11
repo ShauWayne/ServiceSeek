@@ -2,20 +2,21 @@
   <ion-header translucent="true">
     <ion-toolbar>
       <ion-title>
-        <ion-title>
-          <div style="display: flex; text-align: left; color: var(--ion-text-color);">
-            <span style="font-size: 17px;">Menu</span>
-          </div>
-        </ion-title>
-        <img src="../../assets/icon/icono2.png" style="width: 50px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="../../assets/icon/icono2.png" style="width: 50px;" />
+          <span style="font-size: 17px; text-align: left; color: var(--ion-text-color);">
+            Menu
+          </span>
+        </div>
       </ion-title>
       <ion-buttons slot="end">
         <ion-menu-button>
-          <ion-icon name="close" style="color: var(--ion-text-color);"></ion-icon>
+          <ion-icon name="close" color="light"></ion-icon>
         </ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
+  
   <ion-content class="ion-padding" fullscreen="true" style="--background: var(--ion-background-color);">
     <div id="map"></div>
     <ion-list lines="full">
@@ -62,7 +63,7 @@
         <ion-menu-button style="color: var(--ion-text-color);"></ion-menu-button>
       </ion-buttons>
       <ion-title>
-        <div style="display: flex; text-align: center; color: var(--ion-text-color);">
+        <div style="display: flex; text-align: center; color: var(--ion-tittle);">
           <span style="font-size: 30px;">ServiceSeek</span>
         </div>
       </ion-title>
