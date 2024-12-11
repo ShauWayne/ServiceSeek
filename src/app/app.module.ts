@@ -15,6 +15,7 @@ import { SQLite } from '@ionic-native/sqlite/ngx'; // Importa la librería SQLit
 import { IonicStorageModule } from '@ionic/storage-angular'; // Importa el módulo de almacenamiento de Ionic
 import { Drivers } from '@ionic/storage'; // Importa los drivers para Ionic Storage
 
+
 // Decorador NgModule que define el módulo principal de la aplicación
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { Drivers } from '@ionic/storage'; // Importa los drivers para Ionic Stor
     RegisterModalComponent,
     DatePickerModalComponent,
     RecuperarPasswordComponent,
+    
   ],
   imports: [
     // Módulos que se importan para ser utilizados en la aplicación

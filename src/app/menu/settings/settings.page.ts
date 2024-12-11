@@ -9,6 +9,14 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
 })
 export class SettingsPage implements OnInit {
 
+  toggleDarkMode(event: any) {
+    if (event.detail.checked) {
+      document.body.setAttribute('data-theme', 'dark');
+    } else {
+      document.body.setAttribute('data-theme', 'light');
+    }
+  }
+
   constructor(
     private router: Router,
     private auth: AuthenticationService
