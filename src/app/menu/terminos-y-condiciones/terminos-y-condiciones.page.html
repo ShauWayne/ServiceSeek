@@ -71,5 +71,51 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class="ion-padding"></ion-content>
+  <ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Acerca de</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding" [fullscreen]="true">
+    <!-- Información sobre ServiceSeek -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Sobre ServiceSeek</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        ServiceSeek es una plataforma innovadora diseñada para conectar usuarios con proveedores de servicios locales. 
+        Nuestro objetivo es simplificar la búsqueda y garantizar una experiencia confiable, segura y accesible para todos.
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Términos y condiciones -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Términos y Condiciones</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Al utilizar ServiceSeek, aceptas los siguientes términos:
+        <ol>
+          <li>ServiceSeek no se hace responsable de la calidad de los servicios contratados a través de la plataforma.</li>
+          <li>Los datos personales proporcionados serán tratados de acuerdo con nuestra política de privacidad.</li>
+          <li>El uso indebido de la plataforma puede resultar en la suspensión de tu cuenta.</li>
+        </ol>
+        Para más información, por favor contáctanos en <a href="mailto:soporte&#64;serviceseek.com">soporte&#64;serviceseek.com</a>.
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Derechos reservados -->
+      <ion-toolbar>
+        <ion-title size="small" class="ion-text-center">
+          © 2024 Matías Morales y Tania Sáez. Todos los derechos reservados.
+        </ion-title>
+      </ion-toolbar>
+  </ion-content>
+</ion-content>
+
 </div>
