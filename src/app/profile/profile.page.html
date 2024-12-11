@@ -76,33 +76,28 @@
     <!-- Icono de usuario -->
     <div class="user-profile">
       <ion-icon name="person-circle-outline" class="profile-icon"></ion-icon>
-      <h2>Nombre Usuario</h2>
+      <h2>{{ user?.nombre }}</h2>
     </div>
   
     <!-- Lista de datos del usuario -->
     <ion-list lines="full" class="profile-list">
       <ion-item>
         <ion-label>Correo</ion-label>
-        <ion-text>{{ user.email }}</ion-text>
+        <ion-text>{{ user?.correo }}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Teléfono</ion-label>
-        <ion-text>{{ user.phone }}</ion-text>
+        <ion-text>{{ user?.telefono || 'No registrado' }}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Dirección</ion-label>
-        <ion-text>{{ user.address }}</ion-text>
+        <ion-text>{{ user?.direccion || 'No registrada' }}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Fecha de Registro</ion-label>
-        <ion-text>{{ user.registrationDate }}</ion-text>
+        <ion-text>{{ user?.fecha_registro }}</ion-text>
       </ion-item>
     </ion-list>
-  
-    <!-- Botón para modificar datos -->
-    <div class="btn-container">
-      <ion-button expand="block" color="primary" (click)="modifyUserData()">Modificar Datos</ion-button>
-    </div>
   </ion-content>
   
 </div>

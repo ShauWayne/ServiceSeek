@@ -40,6 +40,7 @@ export class AuthenticationService {
           // Guarda en el almacenamiento local que el usuario está autenticado y su nombre
           await this.storage.set('isLoggedIn', true);
           await this.storage.set('user', userClass.nombre);
+          await this.storage.set('correo', userClass.correo);
           return true; // Retorna 'true' indicando que el inicio de sesión fue exitoso
         } else {
           // Muestra una alerta indicando que la contraseña es incorrecta
@@ -86,5 +87,10 @@ export class AuthenticationService {
     const user = await this.storage.get('user');
     // Si el usuario está definido, lo devuelve; de lo contrario, devuelve 'Invitado'
     return user ? String(user) : 'Invitado';
+  }
+  async getCorreo(): Promise<string> {
+    const correo = await this.storage.get('correo');
+    // Si el usuario está definido, lo devuelve; de lo contrario, devuelve 'Invitado'
+    return correo ? String(correo) : 'Invitado';
   }
 }

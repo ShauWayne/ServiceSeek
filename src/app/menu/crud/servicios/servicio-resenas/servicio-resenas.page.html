@@ -59,7 +59,7 @@
       <ion-buttons slot="start">
         <ion-menu-button color="light"></ion-menu-button>
       </ion-buttons>
-      <ion-button slot="end" [routerLink]="['/buscar-servicio']">
+      <ion-button slot="end" (click)="volver()">
             <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
       <ion-title color="light">
@@ -91,7 +91,7 @@
         <ion-card-title>{{ servicio.nombre }}</ion-card-title>
         <ion-card-subtitle>
           <ion-icon name="star" color="warning"></ion-icon>
-            {{ servicio.calificacion }} / 5
+          {{ servicio.calificacion }} / 5
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
@@ -122,7 +122,16 @@
           Escribir reseña
       </ion-button>
     </div>
-
+  
+    <!-- Botón dinámico para manejar favoritos -->
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <ion-button (click)="toggleFavorito()" expand="block">
+        <ion-icon [name]="esFavorito() ? 'heart' : 'heart-outline'" slot="start"></ion-icon>
+        {{ esFavorito() ? 'Quitar de Favoritos' : 'Añadir a Favoritos' }}
+      </ion-button>
+    </div>
+  
+    <!-- Lista de reseñas -->
     <ion-list [inset]="true" *ngFor="let resena of resenas">
       <ion-item [button]="false" detail="false">
         <ion-label>
@@ -143,3 +152,4 @@
     </ion-list>
   </ion-content>
 </div>
+  

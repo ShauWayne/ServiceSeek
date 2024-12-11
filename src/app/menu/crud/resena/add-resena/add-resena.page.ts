@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClServicio } from '../../servicios/model/ClServicio';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
@@ -22,6 +22,7 @@ export class AddResenaPage implements OnInit {
 
   constructor(
     public SqlLiteService: DatabaseService,
+    private navCtrl: NavController,
     private formBuilder: FormBuilder,
     public apiRestService: ApiRestService,//Instancia el ApiRest de JSON
     public loadingController: LoadingController,
@@ -120,7 +121,8 @@ export class AddResenaPage implements OnInit {
 
   }
 
-
-
+  volver() {
+    this.navCtrl.back(); // Navega a la página anterior en el historial
+  }
 }
 

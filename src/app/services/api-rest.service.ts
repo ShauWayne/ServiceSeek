@@ -182,7 +182,7 @@ export class ApiRestService {
   }
 
   // Actualizar un usuario
-  updUsuario(id: number, usuario: ClUsuario): Observable<ClUsuario> {
+  updUsuario(id: string, usuario: ClUsuario): Observable<ClUsuario> {
     console.log('Actualizando usuario Id: ', id, '...');
     return this.http.put<ClUsuario>(apiUrl + "/usuarios" + "/" + id, usuario, httpOptions)
       .pipe(

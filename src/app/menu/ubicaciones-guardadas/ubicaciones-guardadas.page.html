@@ -71,5 +71,31 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class="ion-padding"></ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-item [button]="true">
+        <ion-icon color="danger" slot="start" name="filter-outline" size="large"></ion-icon>
+        <ion-button (click)="cargarPagina()" slot="end">
+          <ion-icon name="reload-outline" color="white"></ion-icon>
+        </ion-button>
+        <ion-title>Ubicaciones guardadas</ion-title>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content color="light" [fullscreen]="true" class="ion-padding">
+    <ion-list [inset]="true">
+      <ion-item *ngFor="let servicio of serviciosFavoritos" [button]="true" detail="false" [routerLink]="['/servicio-resenas', servicio.id]">
+        <ion-label>
+          <strong>{{ servicio.nombre }}</strong>
+          <ion-text>{{ servicio.direccion }}</ion-text><br />
+          <ion-note color="medium" class="ion-text-wrap">{{ servicio.descripcion }}</ion-note>
+        </ion-label>
+        <div class="metadata-end-wrapper" slot="end">
+          <ion-note color="medium">{{ servicio.num_resenas }} reseñas</ion-note>
+          <ion-icon color="medium" name="chevron-forward"></ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </div>

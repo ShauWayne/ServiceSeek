@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClServicio } from '../model/ClServicio';
@@ -16,9 +17,11 @@ export class ServicioResenasPage implements OnInit {
 
   resenas: ClResena[] = []; //Array para Reseñas
   servicio: ClServicio = new ClServicio({}); //Instancia de Servicio Actual sin params
+  favoritos: any[] = [];
 
   constructor(
     //public SqlLiteService: DatabaseService,
+    private navCtrl: NavController,
     public apiRestService: ApiRestService, //Instancia la API JSON
     public loadingController: LoadingController,
     public alertController: AlertController,
@@ -29,6 +32,57 @@ export class ServicioResenasPage implements OnInit {
   ngOnInit() {
     this.cargarServicio();  //Ejecuta función al iniciar
     this.cargarResenas();  //Ejecuta función al iniciar
+    this.cargarUsuarioFavoritos();
+  }
+
+  async cargarUsuarioFavoritos() {
+    const correoUsuario = await this.auth.getCorreo();
+    this.apiRestService.getUsuario(correoUsuario).subscribe({
+      next: (data: any) => {
+        if (data.length > 0) {
+          this.favoritos = data[0].favoritos || [];
+          console.log('Favoritos cargados:', this.favoritos);
+        }
+      },
+      error: (error) => {
+        console.error('Error al cargar los favoritos:', error);
+      },
+    });
+  }
+
+
+  esFavorito(): boolean {
+    return this.favoritos.includes(this.servicio.id);
+  }
+
+  async toggleFavorito() {
+    if (this.esFavorito()) {
+      // Quitar de favoritos
+      this.favoritos = this.favoritos.filter((id) => id !== this.servicio.id);
+      console.log('Servicio eliminado de favoritos:', this.servicio.id);
+    } else {
+      // Añadir a favoritos
+      this.favoritos.push(this.servicio.id);
+      console.log('Servicio añadido a favoritos:', this.servicio.id);
+    }
+
+    // Actualizar en la API
+    const correoUsuario = await this.auth.getCorreo();
+    this.apiRestService.getUsuario(correoUsuario).subscribe({
+      next: (data: any) => {
+        if (data.length > 0) {
+          const usuario = data[0];
+          usuario.favoritos = this.favoritos;
+          this.apiRestService.updUsuario(usuario.id, usuario).subscribe({
+            next: () => console.log('Favoritos actualizados en la API.'),
+            error: (error) => console.error('Error al actualizar favoritos:', error),
+          });
+        }
+      },
+      error: (error) => {
+        console.error('Error al obtener usuario para actualizar favoritos:', error);
+      },
+    });
   }
 
   async cargarServicio(){ //Función para traer Recurso Servicio Actual desde API
@@ -113,8 +167,8 @@ export class ServicioResenasPage implements OnInit {
 
   }
 
-  volver(){
-    this.router.navigate(['..']);
+  volver() {
+    this.navCtrl.back(); // Navega a la página anterior en el historial
   }
 
   cargarPagina(){
